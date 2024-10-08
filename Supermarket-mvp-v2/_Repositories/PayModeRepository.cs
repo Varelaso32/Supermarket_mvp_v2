@@ -93,8 +93,8 @@ namespace Supermarket_mvp_v2._Repositories
                     }
                 }
             }
-
             return payModeList;
+
         }//Fin de clase
 
     }//Fin de clase
