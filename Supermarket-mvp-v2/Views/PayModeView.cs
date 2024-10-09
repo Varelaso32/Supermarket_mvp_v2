@@ -23,6 +23,8 @@ namespace Supermarket_mvp_v2.Views
         public event EventHandler DeletEvent;
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
+        public event EventHandler LoadAllPayModesEvent;
+
 
         public PayModeView()
         {
@@ -49,18 +51,24 @@ namespace Supermarket_mvp_v2.Views
 
             BtnNew.Click += delegate {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
+                ClearSearchBox();
 
                 tabControl1.TabPages.Remove(tabPagePayModeList);
                 tabControl1.TabPages.Add(tabPagePayModeDetail);
-                tabPagePayModeDetail.Text = "Añadir nuevo método de pago"; 
+                tabPagePayModeDetail.Text = "Añadir nuevo método de pago";
+
+                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty); 
             };//
 
             BtnEdit.Click += delegate {
                 EditEvent?.Invoke(this, EventArgs.Empty);
+                ClearSearchBox();
 
                 tabControl1.TabPages.Remove(tabPagePayModeList);
                 tabControl1.TabPages.Add(tabPagePayModeDetail);
-                tabPagePayModeDetail.Text = "Editar método de pago"; 
+                tabPagePayModeDetail.Text = "Editar método de pago";
+
+                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty);  
             };//
 
             BtnSave.Click += delegate {
@@ -92,6 +100,9 @@ namespace Supermarket_mvp_v2.Views
                 {
                     DeletEvent?.Invoke(this, EventArgs.Empty);
                     MessageBox.Show(Message);
+                    ClearSearchBox();
+
+                    LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty); 
                 }
             };//
 
@@ -186,6 +197,7 @@ namespace Supermarket_mvp_v2.Views
             TxtPayModeId.Text = "0";
             TxtPayModeName.Text = "Ingrese el nombre del método de pago";
             TxtPayModeObservation.Text = "Ingrese una observación del método de pago";
+            TxtSearch.Text = "Ingrese el término de búsqueda";
 
             TxtPayModeId.Enter += TextBox_Enter;
             TxtPayModeId.Leave += TextBox_Leave;
@@ -193,7 +205,15 @@ namespace Supermarket_mvp_v2.Views
             TxtPayModeName.Leave += TextBox_Leave;
             TxtPayModeObservation.Enter += TextBox_Enter;
             TxtPayModeObservation.Leave += TextBox_Leave;
-        }
+            TxtSearch.Enter += TextBox_Enter;
+            TxtSearch.Leave += TextBox_Leave;
+
+        }//Fin de la clase
+        private void ClearSearchBox()
+        {
+            TxtSearch.Text = "Ingrese el término de búsqueda";
+
+        }//Fin de la clase
 
         private void TextBox_Enter(object sender, EventArgs e)
         {
@@ -201,7 +221,7 @@ namespace Supermarket_mvp_v2.Views
 
             textBox.SelectAll();
 
-            if (textBox == TxtPayModeId && textBox.Text == "Ingrese el ID del método de pago")
+            if (textBox == TxtPayModeId && textBox.Text == "0")
             {
                 textBox.Text = "";
             }
@@ -210,6 +230,10 @@ namespace Supermarket_mvp_v2.Views
                 textBox.Text = "";
             }
             else if (textBox == TxtPayModeObservation && textBox.Text == "Ingrese una observación del método de pago")
+            {
+                textBox.Text = "";
+            }
+            else if (textBox == TxtSearch && textBox.Text == "Ingrese el término de búsqueda")
             {
                 textBox.Text = "";
             }
@@ -222,7 +246,7 @@ namespace Supermarket_mvp_v2.Views
 
             if (textBox == TxtPayModeId && string.IsNullOrWhiteSpace(textBox.Text))
             {
-                textBox.Text = "Ingrese el ID del método de pago";
+                textBox.Text = "0";
             }
             else if (textBox == TxtPayModeName && string.IsNullOrWhiteSpace(textBox.Text))
             {
@@ -231,6 +255,10 @@ namespace Supermarket_mvp_v2.Views
             else if (textBox == TxtPayModeObservation && string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Text = "Ingrese una observación del método de pago";
+            }
+            else if (textBox == TxtSearch && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Ingrese el término de búsqueda";
             }
 
         }//Fin de la clase

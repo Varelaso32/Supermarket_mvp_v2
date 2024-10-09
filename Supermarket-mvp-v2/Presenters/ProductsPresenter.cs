@@ -16,6 +16,7 @@ namespace Supermarket_mvp_v2.Presenters
         private BindingSource productBindingSource;
         private IEnumerable<ProductsModels> productList;
 
+
         public ProductsPresenter(IProductsView view, IProductsRepository repository)
         {
             this.view = view;

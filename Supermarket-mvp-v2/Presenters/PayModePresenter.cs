@@ -31,29 +31,30 @@ namespace Supermarket_mvp_v2.Presenters
 
             this.view.SetPayModeListBildingSource(payModeBindingSource);
 
-            loadAllPayModeList();
+            LoadAllPayModeList();
 
             this.view.Show();
 
-        }//Fin de la clase
+        }//Fin de Clase
 
-        private void loadAllPayModeList()
+        private void LoadAllPayModeList()
         {
             payModeList = repository.GetAll();
             payModeBindingSource.DataSource = payModeList;
-        }
+
+        }//Fin de Clase
 
         private void CancelAction(object sender, EventArgs e)
         {
             CleanViewFields();
+            LoadAllPayModeList();
 
-        }//Fin de la clase
+        }//Fin de Clase
 
         private void SavePayMode(object sender, EventArgs e)
         {
             var payMode = new PayModeModel();
 
-            // Validar que el ID sea un número válido
             if (!int.TryParse(view.PayModeId, out int id))
             {
                 view.Message = "El ID del modo de pago debe ser un número válido.";
@@ -81,7 +82,7 @@ namespace Supermarket_mvp_v2.Presenters
                 }
 
                 view.IsSuccessful = true;
-                loadAllPayModeList();
+                LoadAllPayModeList();  
                 CleanViewFields();
             }
             catch (Exception ex)
@@ -89,8 +90,8 @@ namespace Supermarket_mvp_v2.Presenters
                 view.IsSuccessful = false;
                 view.Message = ex.Message;
             }
-        }
 
+        }//Fin de Clase
 
         private void DeleteSelectedPayMode(object sender, EventArgs e)
         {
@@ -102,7 +103,7 @@ namespace Supermarket_mvp_v2.Presenters
 
                 view.IsSuccessful = true;
                 view.Message = "Método de pago eliminado correctamente";
-                loadAllPayModeList();
+                LoadAllPayModeList();  
             }
             catch (Exception ex)
             {
@@ -110,7 +111,7 @@ namespace Supermarket_mvp_v2.Presenters
                 view.Message = "Ocurrió un error, no se pudo eliminar el método de pago";
             }
 
-        }//Fin de la clase
+        }//Fin de Clase
 
         private void LoadSelectPayModeToEdit(object sender, EventArgs e)
         {
@@ -122,14 +123,15 @@ namespace Supermarket_mvp_v2.Presenters
 
             view.IsEdit = true;
 
-
-        }//Fin de la clase
+        }//Fin de Clase
 
         private void AddNewPayMode(object sender, EventArgs e)
         {
             view.IsEdit = false;
+            CleanViewFields();
+            LoadAllPayModeList();
 
-        }//Fin de la clase
+        }//Fin de Clase
 
         private void SearchPayMode(object? sender, EventArgs e)
         {
@@ -144,17 +146,14 @@ namespace Supermarket_mvp_v2.Presenters
             }
             payModeBindingSource.DataSource = payModeList;
 
-        }//Fin de la clase
-
+        }//Fin de Clase
 
         private void CleanViewFields()
         {
             view.PayModeId = "0";
             view.PayModeName = "";
             view.PayModeObservation = "";
-
-        }//Fin de la clase
-
-    }//Fin de la clase
-
+            
+        }//Fin de Clase
+    }
 }

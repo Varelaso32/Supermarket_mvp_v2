@@ -156,7 +156,7 @@
             TxtSearch.Name = "TxtSearch";
             TxtSearch.Size = new Size(557, 27);
             TxtSearch.TabIndex = 1;
-            TxtSearch.Text = "Data to search";
+            TxtSearch.Text = "Ingrese el término de búsqueda";
             // 
             // label2
             // 
