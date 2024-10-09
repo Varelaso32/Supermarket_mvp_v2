@@ -30,6 +30,8 @@ namespace Supermarket_mvp_v2.Views
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPagePayModeDetail);
 
+            SetPlaceholders();
+
             BtnClose.Click += delegate { this.Close(); };
 
         }//Fin de la clase
@@ -179,6 +181,59 @@ namespace Supermarket_mvp_v2.Views
         {
 
         }
+        private void SetPlaceholders()
+        {
+            TxtPayModeId.Text = "";
+            TxtPayModeName.Text = "Ingrese el nombre del método de pago";
+            TxtPayModeObservation.Text = "Ingrese una observación del método de pago";
+
+            TxtPayModeId.Enter += TextBox_Enter;
+            TxtPayModeId.Leave += TextBox_Leave;
+            TxtPayModeName.Enter += TextBox_Enter;
+            TxtPayModeName.Leave += TextBox_Leave;
+            TxtPayModeObservation.Enter += TextBox_Enter;
+            TxtPayModeObservation.Leave += TextBox_Leave;
+        }
+
+        private void TextBox_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            textBox.SelectAll();
+
+            if (textBox == TxtPayModeId && textBox.Text == "Ingrese el ID del método de pago")
+            {
+                textBox.Text = "";
+            }
+            else if (textBox == TxtPayModeName && textBox.Text == "Ingrese el nombre del método de pago")
+            {
+                textBox.Text = "";
+            }
+            else if (textBox == TxtPayModeObservation && textBox.Text == "Ingrese una observación del método de pago")
+            {
+                textBox.Text = "";
+            }
+
+        }//Fin de la clase
+
+        private void TextBox_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+
+            if (textBox == TxtPayModeId && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Ingrese el ID del método de pago";
+            }
+            else if (textBox == TxtPayModeName && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Ingrese el nombre del método de pago";
+            }
+            else if (textBox == TxtPayModeObservation && string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Ingrese una observación del método de pago";
+            }
+
+        }//Fin de la clase
 
     }//Fin de la clase
 

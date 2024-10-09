@@ -210,7 +210,7 @@
             TxtPayModeObservation.Name = "TxtPayModeObservation";
             TxtPayModeObservation.Size = new Size(374, 115);
             TxtPayModeObservation.TabIndex = 5;
-            TxtPayModeObservation.Text = "Pay Mode Observation";
+            TxtPayModeObservation.Text = "Ingrese una observación del método de pago";
             // 
             // label5
             // 
@@ -227,7 +227,7 @@
             TxtPayModeName.Name = "TxtPayModeName";
             TxtPayModeName.Size = new Size(364, 27);
             TxtPayModeName.TabIndex = 3;
-            TxtPayModeName.Text = "Pay Mode Name";
+            TxtPayModeName.Text = "Ingrese el nombre del método de pago";
             // 
             // label4
             // 

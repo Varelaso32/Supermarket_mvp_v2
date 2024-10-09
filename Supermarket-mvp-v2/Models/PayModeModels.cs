@@ -10,17 +10,17 @@ namespace Supermarketmvp.Models //Samuel Varela Morales
 {
     internal class PayModeModel
     {
-        [DisplayName("Pay Mode Id")]
+        [DisplayName("ID del Método de Pago")]
         public int Id { get; set; }
 
-        [DisplayName("Pay Mode Name")]
-        [Required(ErrorMessage = "Pay Mode name is Required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Pay Mode name must be between 3 and 50  characters")]
+        [DisplayName("Nombre del Método de Pago")]
+        [Required(ErrorMessage = "El nombre del método de pago es obligatorio")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "El nombre del método de pago debe tener entre 3 y 50 caracteres")]
         public string Name { get; set; }
 
-        [DisplayName("Pay Mode Observartion")]
-        [Required(ErrorMessage = "Pay Mode observation is Required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Pay Mode observation must be between 3 and 200  characters")]
+        [DisplayName("Observación del Método de Pago")]
+        [Required(ErrorMessage = "La observación del método de pago es obligatoria")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "La observación del método de pago debe tener entre 3 y 200 caracteres")]
         public string Observation { get; set; }
 
     }//Fin de la clase
