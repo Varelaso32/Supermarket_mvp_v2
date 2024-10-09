@@ -45,6 +45,9 @@ namespace Supermarket_mvp_v2.Views
                 tabControl1.TabPages.Remove(tabPageProductsList);
                 tabControl1.TabPages.Add(tabPageProductsDetail);
                 tabPageProductsDetail.Text = "Añadir nuevo producto";
+
+                // Mostrar los placeholders
+                SetPlaceholders();
             };
 
             BtnEdit.Click += delegate {
@@ -143,6 +146,30 @@ namespace Supermarket_mvp_v2.Views
             DgProducts.DataSource = productList;
         }
 
+        private static ProductsView instance;
+
+        public static ProductsView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ProductsView();
+                instance.MdiParent = parentContainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
+
+        }//Fin de la clase
+
         public void Show()
         {
             base.Show();
@@ -150,7 +177,7 @@ namespace Supermarket_mvp_v2.Views
 
         private void SetPlaceholders()
         {
-            TxtProductsId.Text = "";
+            TxtProductsId.Text = "0";
             TxtProductsName.Text = "Ingrese el nombre del producto";
             TxtProductsPrecio.Text = "Ingrese el precio del producto";
             TxtProductsStock.Text = "Ingrese el stock del producto";

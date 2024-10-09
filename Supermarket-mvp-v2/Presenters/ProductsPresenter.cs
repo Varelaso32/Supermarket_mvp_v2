@@ -1,23 +1,26 @@
-﻿using Supermarket_mvp_v2.Models;
-using Supermarket_mvp_v2.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel;
+using Supermarket_mvp_v2.Models;
+using Supermarket_mvp_v2.Views;
 
 namespace Supermarket_mvp_v2.Presenters
 {
     internal class ProductsPresenter
     {
         private IProductsView view;
-        private IProductsRepository repository; // Asegúrate de tener esta interfaz creada
+        private IProductsRepository repository; 
         private BindingSource productBindingSource;
-        private IEnumerable<ProductsModels> productList; // Asegúrate de tener esta clase de modelo creada
+        private IEnumerable<ProductsModels> productList;
 
         public ProductsPresenter(IProductsView view, IProductsRepository repository)
         {
-            this.productBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
+            this.productBindingSource = new BindingSource();
 
             // Asociar eventos
             this.view.SearchEvent += SearchProduct;
@@ -27,19 +30,15 @@ namespace Supermarket_mvp_v2.Presenters
             this.view.SaveEvent += SaveProduct;
             this.view.CancelEvent += CancelAction;
 
-            // Configurar el BindingSource
             this.view.SetProductListBindingSource(productBindingSource);
+            LoadAllProductList();
 
-            // Cargar todos los productos
-            LoadAllProducts();
-
-            // Mostrar la vista
             this.view.Show();
         }
 
-        private void LoadAllProducts()
+        private void LoadAllProductList()
         {
-            productList = repository.GetAll(); // Asegúrate de que este método esté definido en tu repositorio
+            productList = repository.GetAll();
             productBindingSource.DataSource = productList;
         }
 
@@ -50,19 +49,19 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void SaveProduct(object sender, EventArgs e)
         {
-            var product = new ProductModel
+            var product = new ProductsModels
             {
                 Id = Convert.ToInt32(view.ProductId),
                 Name = view.ProductName,
-                Price = Convert.ToInt32(view.ProductPrice), // Cambia a int como pediste
+                Price = Convert.ToDecimal(view.ProductPrice),
                 Stock = Convert.ToInt32(view.ProductStock),
-                CategoryId = view.ProductCategoryId
+                CategoryId = Convert.ToInt32(view.ProductCategoryId)
             };
 
             try
             {
-                // Validar datos antes de guardar
-                new Common.ModelDataValidation().Validate(product); // Asegúrate de que esto esté implementado
+                new Common.ModelDataValidation().Validate(product);
+
                 if (view.IsEdit)
                 {
                     repository.Edit(product);
@@ -73,8 +72,9 @@ namespace Supermarket_mvp_v2.Presenters
                     repository.Add(product);
                     view.Message = "Producto añadido correctamente";
                 }
+
                 view.IsSuccessful = true;
-                LoadAllProducts();
+                LoadAllProductList();
                 CleanViewFields();
             }
             catch (Exception ex)
@@ -84,17 +84,16 @@ namespace Supermarket_mvp_v2.Presenters
             }
         }
 
+
         private void DeleteSelectedProduct(object sender, EventArgs e)
         {
             try
             {
-                var product = (ProductModel)productBindingSource.Current;
-
-                repository.Delete(product.Id); // Asegúrate de que esto esté implementado
-
+                var product = (ProductsModels)productBindingSource.Current;
+                repository.Delete(product.Id);
                 view.IsSuccessful = true;
                 view.Message = "Producto eliminado correctamente";
-                LoadAllProducts();
+                LoadAllProductList();
             }
             catch (Exception ex)
             {
@@ -105,13 +104,13 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void LoadSelectedProductToEdit(object sender, EventArgs e)
         {
-            var product = (ProductModel)productBindingSource.Current;
+            var product = (ProductsModels)productBindingSource.Current;
 
             view.ProductId = product.Id.ToString();
             view.ProductName = product.Name;
             view.ProductPrice = product.Price.ToString();
             view.ProductStock = product.Stock.ToString();
-            view.ProductCategoryId = product.CategoryId;
+            view.ProductCategoryId = product.CategoryId.ToString();
 
             view.IsEdit = true;
         }
@@ -119,14 +118,15 @@ namespace Supermarket_mvp_v2.Presenters
         private void AddNewProduct(object sender, EventArgs e)
         {
             view.IsEdit = false;
+            CleanViewFields(); 
         }
 
         private void SearchProduct(object sender, EventArgs e)
         {
-            bool emptyValue = string.IsNullOrWhiteSpace(view.SearchValue);
+            bool emptyValue = string.IsNullOrWhiteSpace(this.view.SearchValue);
             if (!emptyValue)
             {
-                productList = repository.GetByValue(view.SearchValue); // Asegúrate de que este método esté definido en tu repositorio
+                productList = repository.GetByCategory(this.view.SearchValue);
             }
             else
             {
@@ -139,8 +139,8 @@ namespace Supermarket_mvp_v2.Presenters
         {
             view.ProductId = "0";
             view.ProductName = "";
-            view.ProductPrice = "0"; // Puedes ajustarlo según lo que necesites
-            view.ProductStock = "0"; // Puedes ajustarlo según lo que necesites
+            view.ProductPrice = "";
+            view.ProductStock = "";
             view.ProductCategoryId = "";
         }
     }

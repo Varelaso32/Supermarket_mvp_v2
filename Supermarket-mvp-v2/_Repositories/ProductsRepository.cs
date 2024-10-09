@@ -76,24 +76,33 @@ namespace Supermarket_mvp_v2._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "SELECT * FROM Products ORDER BY Product_Id DESC";
-                using (var reader = command.ExecuteReader())
+
+                try
                 {
-                    while (reader.Read())
+                    using (var reader = command.ExecuteReader())
                     {
-                        var productModel = new ProductsModels
+                        while (reader.Read())
                         {
-                            Id = (int)reader["Product_Id"],
-                            Name = reader["Product_Name"].ToString(),
-                            Price = (decimal)reader["Product_Price"],
-                            Stock = (int)reader["Product_Stock"],
-                            CategoryId = (int)reader["Category_Id"]
-                        };
-                        productList.Add(productModel);
+                            var productModel = new ProductsModels
+                            {
+                                Id = (int)reader["Product_Id"],
+                                Name = reader["Product_Name"].ToString(),
+                                Price = (decimal)reader["Product_Price"],
+                                Stock = (int)reader["Product_Stock"],
+                                CategoryId = (int)reader["Category_Id"]
+                            };
+                            productList.Add(productModel);
+                        }
                     }
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine($"Error al ejecutar la consulta: {ex.Message}");
                 }
             }
             return productList;
-        } // Fin del método GetAll
+        }
+
 
         public ProductsModels GetById(int id)
         {
@@ -124,22 +133,30 @@ namespace Supermarket_mvp_v2._Repositories
             return productModel;
         } // Fin del método GetById
 
-        public IEnumerable<ProductsModels> GetByCategory(int categoryId)
+        public IEnumerable<ProductsModels> GetByCategory(string value)
         {
             var productList = new List<ProductsModels>();
+            int categoryId = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
+            string categoryName = value;
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM Products WHERE Category_Id = @categoryId ORDER BY Product_Id DESC";
+                command.CommandText = @"
+            SELECT * FROM Products
+            WHERE Category_Id = @categoryId OR Product_Name LIKE @categoryName + '%'
+            ORDER BY Product_Id DESC";
+
                 command.Parameters.AddWithValue("@categoryId", SqlDbType.Int).Value = categoryId;
+                command.Parameters.AddWithValue("@categoryName", SqlDbType.NVarChar).Value = categoryName;
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        var productModel = new ProductsModels
+                        var productModel = new ProductsModels()
                         {
                             Id = (int)reader["Product_Id"],
                             Name = reader["Product_Name"].ToString(),
@@ -152,6 +169,10 @@ namespace Supermarket_mvp_v2._Repositories
                 }
             }
             return productList;
-        } // Fin del método GetByCategory
-    } // Fin de la clase
+        }
+
+
+
+
+    }
 }

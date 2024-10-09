@@ -52,13 +52,23 @@ namespace Supermarket_mvp_v2.Presenters
         private void SavePayMode(object sender, EventArgs e)
         {
             var payMode = new PayModeModel();
-            payMode.Id = Convert.ToInt32(view.PayModeId);
+
+            // Validar que el ID sea un número válido
+            if (!int.TryParse(view.PayModeId, out int id))
+            {
+                view.Message = "El ID del modo de pago debe ser un número válido.";
+                view.IsSuccessful = false;
+                return;
+            }
+
+            payMode.Id = id;
             payMode.Name = view.PayModeName;
             payMode.Observation = view.PayModeObservation;
 
             try
             {
                 new Common.ModelDataValidation().Validate(payMode);
+
                 if (view.IsEdit)
                 {
                     repository.Edit(payMode);
@@ -69,19 +79,18 @@ namespace Supermarket_mvp_v2.Presenters
                     repository.Add(payMode);
                     view.Message = "Método de pago añadido correctamente";
                 }
+
                 view.IsSuccessful = true;
                 loadAllPayModeList();
                 CleanViewFields();
             }
             catch (Exception ex)
             {
-                // Si ocurre una excepción se configura IsSuccesfull en false
-                // y a la propiedad Message de la vista se asigna el mensaje de la excepción
                 view.IsSuccessful = false;
                 view.Message = ex.Message;
             }
+        }
 
-        }//Fin de la clase
 
         private void DeleteSelectedPayMode(object sender, EventArgs e)
         {

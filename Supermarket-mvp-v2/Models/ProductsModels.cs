@@ -1,36 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+﻿using System.ComponentModel.DataAnnotations;
 
-
-namespace Supermarket_mvp_v2.Models //Samuel Varela Morales
+namespace Supermarket_mvp_v2.Models
 {
     internal class ProductsModels
     {
-        [DisplayName("ID del Producto")]
+        [Required(ErrorMessage = "El ID es obligatorio.")]
         public int Id { get; set; }
 
-        [DisplayName("Nombre del Producto")]
-        [Required(ErrorMessage = "El nombre del producto es obligatorio")]
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "El nombre del producto debe tener entre 3 y 100 caracteres")]
+        [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
+        [StringLength(100, ErrorMessage = "El nombre no puede exceder los 100 caracteres.")]
         public string Name { get; set; }
 
-        [DisplayName("Precio del Producto")]
-        [Required(ErrorMessage = "El precio del producto es obligatorio")]
-        [Range(0.01, 10000, ErrorMessage = "El precio del producto debe ser mayor que cero")]
+        [Required(ErrorMessage = "El precio es obligatorio.")]
+        [Range(0, double.MaxValue, ErrorMessage = "El precio debe ser un número positivo.")]
         public decimal Price { get; set; }
 
-        [DisplayName("Stock del Producto")]
-        [Required(ErrorMessage = "El stock del producto es obligatorio")]
-        [Range(0, int.MaxValue, ErrorMessage = "El stock del producto no puede ser negativo")]
+        [Required(ErrorMessage = "El stock es obligatorio.")]
+        [Range(0, int.MaxValue, ErrorMessage = "El stock debe ser un número entero positivo.")]
         public int Stock { get; set; }
 
-        [DisplayName("ID de la Categoría")]
-        [Required(ErrorMessage = "El ID de la categoría es obligatorio")]
+        [Required(ErrorMessage = "La categoría es obligatoria.")]
         public int CategoryId { get; set; }
-    } // Fin de la clase
+    }
 }

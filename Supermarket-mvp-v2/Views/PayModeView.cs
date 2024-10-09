@@ -183,7 +183,7 @@ namespace Supermarket_mvp_v2.Views
         }
         private void SetPlaceholders()
         {
-            TxtPayModeId.Text = "";
+            TxtPayModeId.Text = "0";
             TxtPayModeName.Text = "Ingrese el nombre del método de pago";
             TxtPayModeObservation.Text = "Ingrese una observación del método de pago";
 
