@@ -45,31 +45,80 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void CancelAction(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
 
         }//Fin de la clase
 
         private void SavePayMode(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var payMode = new PayModeModel();
+            payMode.Id = Convert.ToInt32(view.PayModeId);
+            payMode.Name = view.PayModeName;
+            payMode.Observation = view.PayModeObservation;
+
+            try
+            {
+                new Common.ModelDataValidation().Validate(payMode);
+                if (view.IsEdit)
+                {
+                    repository.Edit(payMode);
+                    view.Message = "Método de pago editado correctamente";
+                }
+                else
+                {
+                    repository.Add(payMode);
+                    view.Message = "Método de pago añadido correctamente";
+                }
+                view.IsSuccessful = true;
+                loadAllPayModeList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre una excepción se configura IsSuccesfull en false
+                // y a la propiedad Message de la vista se asigna el mensaje de la excepción
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
 
         }//Fin de la clase
 
         private void DeleteSelectedPayMode(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var payMode = (PayModeModel)payModeBindingSource.Current;
+
+                repository.Delete(payMode.Id);
+
+                view.IsSuccessful = true;
+                view.Message = "Método de pago eliminado correctamente";
+                loadAllPayModeList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "Ocurrió un error, no se pudo eliminar el método de pago";
+            }
 
         }//Fin de la clase
 
         private void LoadSelectPayModeToEdit(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var payMode = (PayModeModel)payModeBindingSource.Current;
+
+            view.PayModeId = payMode.Id.ToString();
+            view.PayModeName = payMode.Name;
+            view.PayModeObservation = payMode.Observation;
+
+            view.IsEdit = true;
+
 
         }//Fin de la clase
 
         private void AddNewPayMode(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
 
         }//Fin de la clase
 
@@ -85,6 +134,15 @@ namespace Supermarket_mvp_v2.Presenters
                 payModeList = repository.GetAll();
             }
             payModeBindingSource.DataSource = payModeList;
+
+        }//Fin de la clase
+
+
+        private void CleanViewFields()
+        {
+            view.PayModeId = "0";
+            view.PayModeName = "";
+            view.PayModeObservation = "";
 
         }//Fin de la clase
 

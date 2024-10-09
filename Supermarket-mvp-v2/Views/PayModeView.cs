@@ -43,9 +43,58 @@ namespace Supermarket_mvp_v2.Views
                 {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
-            };
+            };//
 
-        }//Fin de la clase
+            BtnNew.Click += delegate {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeList);
+                tabControl1.TabPages.Add(tabPagePayModeDetail);
+                tabPagePayModeDetail.Text = "Añadir nuevo método de pago"; 
+            };//
+
+            BtnEdit.Click += delegate {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeList);
+                tabControl1.TabPages.Add(tabPagePayModeDetail);
+                tabPagePayModeDetail.Text = "Editar método de pago"; 
+            };//
+
+            BtnSave.Click += delegate {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPagePayModeDetail);
+                    tabControl1.TabPages.Add(tabPagePayModeList);
+                }
+
+                MessageBox.Show(Message);
+            };//
+
+            BtnCancel.Click += delegate {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPagePayModeDetail);
+                tabControl1.TabPages.Add(tabPagePayModeList);
+            };//
+
+            BtnDelete.Click += delegate {
+                var result = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar el método de pago seleccionado?",
+                    "Advertencia",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DeletEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };//
+
+        }
+        //Fin de la clase
 
         public void SetPayModeListBildingSource(BindingSource payModeList)
         {
