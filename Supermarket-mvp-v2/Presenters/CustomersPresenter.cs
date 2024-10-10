@@ -9,9 +9,9 @@ namespace Supermarket_mvp_v2.Presenters
     internal class CustomersPresenter
     {
         private ICustomersView view;
-        private ICustomersRepository repository; // Asegúrate de tener esta interfaz creada
+        private ICustomersRepository repository; 
         private BindingSource customerBindingSource;
-        private IEnumerable<CustomersModel> customerList; // Asume que tienes un modelo CustomersModels
+        private IEnumerable<CustomersModel> customerList;
 
         public CustomersPresenter(ICustomersView view, ICustomersRepository repository)
         {

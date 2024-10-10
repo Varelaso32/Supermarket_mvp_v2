@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            BtnProducts = new Button();
             BtnExit = new Button();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
-            BtnProducts = new Button();
+            BtnCustomers = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(BtnCustomers);
             panel1.Controls.Add(BtnProducts);
             panel1.Controls.Add(BtnExit);
             panel1.Controls.Add(BtnPayMode);
@@ -48,6 +50,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(250, 542);
             panel1.TabIndex = 0;
+            // 
+            // BtnProducts
+            // 
+            BtnProducts.BackgroundImage = Properties.Resources.products1;
+            BtnProducts.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnProducts.Location = new Point(3, 182);
+            BtnProducts.Name = "BtnProducts";
+            BtnProducts.Size = new Size(244, 87);
+            BtnProducts.TabIndex = 3;
+            BtnProducts.UseVisualStyleBackColor = true;
             // 
             // BtnExit
             // 
@@ -80,15 +92,15 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // BtnProducts
+            // BtnCustomers
             // 
-            BtnProducts.BackgroundImage = Properties.Resources.products1;
-            BtnProducts.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnProducts.Location = new Point(3, 182);
-            BtnProducts.Name = "BtnProducts";
-            BtnProducts.Size = new Size(244, 87);
-            BtnProducts.TabIndex = 3;
-            BtnProducts.UseVisualStyleBackColor = true;
+            BtnCustomers.BackgroundImage = Properties.Resources.providers1;
+            BtnCustomers.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnCustomers.Location = new Point(3, 275);
+            BtnCustomers.Name = "BtnCustomers";
+            BtnCustomers.Size = new Size(244, 87);
+            BtnCustomers.TabIndex = 4;
+            BtnCustomers.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -112,5 +124,6 @@
         private Button BtnPayMode;
         private Button BtnExit;
         private Button BtnProducts;
+        private Button BtnCustomers;
     }
 }

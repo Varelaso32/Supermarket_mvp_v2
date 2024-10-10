@@ -10,6 +10,7 @@ namespace Supermarket_mvp_v2.Views
         private bool isSuccessful;
         private string message;
 
+        private static CustomersView instance;
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditEvent;
@@ -86,6 +87,26 @@ namespace Supermarket_mvp_v2.Views
             {
                 TxtSearch.Clear();
             };
+        }
+        public static CustomersView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CustomersView();
+                instance.MdiParent = parentContainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+            return instance;
         }
 
         public string CustomersId
