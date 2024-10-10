@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Supermarket_mvp_v2.Models
 {
-    internal interface ICustomersRepository
+    internal interface ICategoriesRepository
     {
-        void Add(CustomersModel customerModel);
-        void Edit(CustomersModel customerModel);
+        void Add(CategoriesModel categoryModel);
+        void Edit(CategoriesModel categoryModel);
         void Delete(int id);
-        IEnumerable<CustomersModel> GetAll();
-
-        IEnumerable<CustomersModel> GetByValue(string value);
-
-
-    } // Fin de la interfaz
-
+        IEnumerable<CategoriesModel> GetAll();
+        IEnumerable<CategoriesModel> GetByValue(string value); 
+    }
 }
