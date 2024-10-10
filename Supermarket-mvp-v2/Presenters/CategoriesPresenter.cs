@@ -85,18 +85,30 @@ namespace Supermarket_mvp_v2.Presenters
             try
             {
                 var category = (CategoriesModel)categoryBindingSource.Current;
+                if (category == null)
+                {
+                    view.Message = "No se ha seleccionado ninguna categoría para eliminar.";
+                    return;
+                }
+
                 repository.Delete(category.Id);
                 view.IsSuccessful = true;
-                view.Message = "Categoría eliminada correctamente";
+                view.Message = "Categoría eliminada correctamente"; 
                 LoadAllCategoryList();
                 ClearSearchField();
+            }
+            catch (InvalidOperationException ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
-                view.Message = "Ocurrió un error, no se pudo eliminar la categoría";
+                view.Message = "Ocurrió un error, no se pudo eliminar la categoría"; 
             }
         }
+
 
         private void LoadSelectedCategoryToEdit(object sender, EventArgs e)
         {

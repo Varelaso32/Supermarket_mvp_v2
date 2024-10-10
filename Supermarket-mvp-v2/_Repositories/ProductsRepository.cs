@@ -16,8 +16,29 @@ namespace Supermarket_mvp_v2._Repositories
             this.connectionString = connectionString;
         } // Fin del constructor
 
+        private bool CategoryExists(int categoryId)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "SELECT COUNT(*) FROM Category WHERE Id = @categoryId";
+                command.Parameters.AddWithValue("@categoryId", categoryId);
+
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
         public void Add(ProductsModels productModel)
         {
+            // Verificar si la categoría existe
+            if (!CategoryExists(productModel.CategoryId))
+            {
+                throw new ArgumentException("El ID de la Categoria no es válida.");
+            }
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
@@ -30,7 +51,7 @@ namespace Supermarket_mvp_v2._Repositories
                 command.Parameters.AddWithValue("@categoryId", SqlDbType.Int).Value = productModel.CategoryId;
                 command.ExecuteNonQuery();
             }
-        } // Fin del método Add
+        }
 
         public void Delete(int id)
         {
@@ -47,17 +68,23 @@ namespace Supermarket_mvp_v2._Repositories
 
         public void Edit(ProductsModels productModel)
         {
+            // Verificar si la categoría existe
+            if (!CategoryExists(productModel.CategoryId))
+            {
+                throw new ArgumentException("El ID de la Categoria no es válida.");
+            }
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = @"UPDATE Products
-                                        SET Product_Name = @name,
-                                            Product_Price = @price,
-                                            Product_Stock = @stock,
-                                            Category_Id = @categoryId
-                                        WHERE Product_Id = @id";
+                                SET Product_Name = @name,
+                                    Product_Price = @price,
+                                    Product_Stock = @stock,
+                                    Category_Id = @categoryId
+                                WHERE Product_Id = @id";
                 command.Parameters.AddWithValue("@name", SqlDbType.NVarChar).Value = productModel.Name;
                 command.Parameters.AddWithValue("@price", SqlDbType.Decimal).Value = productModel.Price;
                 command.Parameters.AddWithValue("@stock", SqlDbType.Int).Value = productModel.Stock;
@@ -65,7 +92,8 @@ namespace Supermarket_mvp_v2._Repositories
                 command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = productModel.Id;
                 command.ExecuteNonQuery();
             }
-        } // Fin del método Edit
+        }
+
 
         public IEnumerable<ProductsModels> GetAll()
         {
@@ -170,9 +198,6 @@ namespace Supermarket_mvp_v2._Repositories
             }
             return productList;
         }
-
-
-
 
     }
 }

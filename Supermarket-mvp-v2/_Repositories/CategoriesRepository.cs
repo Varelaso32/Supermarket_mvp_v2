@@ -45,9 +45,28 @@ namespace Supermarket_mvp_v2._Repositories
                 command.ExecuteNonQuery();
             }
         }
+        private bool HasProducts(int categoryId)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "SELECT COUNT(*) FROM Products WHERE Category_Id = @categoryId";
+                command.Parameters.AddWithValue("@categoryId", SqlDbType.Int).Value = categoryId;
+
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
 
         public void Delete(int id)
         {
+            if (HasProducts(id))
+            {
+                throw new InvalidOperationException("No se puede eliminar la categoría porque hay productos asociados a ella.");
+            }
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {

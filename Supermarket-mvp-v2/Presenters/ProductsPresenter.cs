@@ -52,42 +52,86 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void SaveProduct(object sender, EventArgs e)
         {
-            var product = new ProductsModels
+            // Crear un nuevo objeto de producto
+            var product = new ProductsModels();
+
+            // Validar y convertir el ProductId
+            if (!int.TryParse(view.ProductId, out int productId))
             {
-                Id = Convert.ToInt32(view.ProductId),
-                Name = view.ProductName,
-                Price = Convert.ToDecimal(view.ProductPrice),
-                Stock = Convert.ToInt32(view.ProductStock),
-                CategoryId = Convert.ToInt32(view.ProductCategoryId)
-            };
+                view.Message = "El ID del producto no es válido.";
+                view.IsSuccessful = false;
+                return;
+            }
+            product.Id = productId;
+
+            // Validar y convertir el ProductName
+            if (string.IsNullOrWhiteSpace(view.ProductName))
+            {
+                view.Message = "El nombre del producto no puede estar vacío.";
+                view.IsSuccessful = false;
+                return;
+            }
+            product.Name = view.ProductName;
+
+            // Validar y convertir el ProductPrice
+            if (!decimal.TryParse(view.ProductPrice, out decimal productPrice))
+            {
+                view.Message = "El precio del producto no es válido.";
+                view.IsSuccessful = false;
+                return;
+            }
+            product.Price = productPrice;
+
+            // Validar y convertir el ProductStock
+            if (!int.TryParse(view.ProductStock, out int productStock))
+            {
+                view.Message = "El stock del producto no es válido.";
+                view.IsSuccessful = false;
+                return;
+            }
+            product.Stock = productStock;
+
+            // Validar y convertir el CategoryId
+            if (!int.TryParse(view.ProductCategoryId, out int categoryId))
+            {
+                view.Message = "El ID de la Categoria no es válida.";
+                view.IsSuccessful = false;
+                return;
+            }
+            product.CategoryId = categoryId;
 
             try
             {
-                new Common.ModelDataValidation().Validate(product);
+                new Common.ModelDataValidation().Validate(product); // Realiza la validación de los datos
 
                 if (view.IsEdit)
                 {
                     repository.Edit(product);
-                    view.Message = "Producto editado correctamente";
+                    view.Message = "Producto editado correctamente."; // Mensaje exitoso al editar
                 }
                 else
                 {
                     repository.Add(product);
-                    view.Message = "Producto añadido correctamente";
+                    view.Message = "Producto añadido correctamente."; // Mensaje exitoso al agregar
                 }
 
                 view.IsSuccessful = true;
-                LoadAllProductList();  
-                CleanViewFields();
-                ClearSearchField();    
+                LoadAllProductList(); // Cargar la lista actualizada de productos
+            }
+            catch (ArgumentException ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message; // Mensaje específico para el CategoryId no existente
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
-                view.Message = ex.Message;
+                view.Message = "Ocurrió un error: " + ex.Message; // Mensaje de error si ocurre una excepción
             }
+        }
 
-        }//Fin de clase
+
+
 
         private void DeleteSelectedProduct(object sender, EventArgs e)
         {
