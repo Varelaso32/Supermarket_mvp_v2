@@ -11,7 +11,7 @@ namespace Supermarket_mvp_v2.Presenters
         private ICustomersView view;
         private ICustomersRepository repository; 
         private BindingSource customerBindingSource;
-        private IEnumerable<CustomersModel> customerList;
+        private IEnumerable<CustomersModel> customerList; 
 
         public CustomersPresenter(ICustomersView view, ICustomersRepository repository)
         {
@@ -34,7 +34,7 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void LoadAllCustomerList()
         {
-            customerList = repository.GetAll(); // Implementa este método en tu repositorio
+            customerList = repository.GetAll(); 
             customerBindingSource.DataSource = customerList;
         }
 
@@ -60,16 +60,16 @@ namespace Supermarket_mvp_v2.Presenters
 
             try
             {
-                new Common.ModelDataValidation().Validate(customer); // Asegúrate de tener esta validación
+                new Common.ModelDataValidation().Validate(customer); 
 
                 if (view.IsEdit)
                 {
-                    repository.Edit(customer); // Implementa este método en tu repositorio
+                    repository.Edit(customer); 
                     view.Message = "Cliente editado correctamente";
                 }
                 else
                 {
-                    repository.Add(customer); // Implementa este método en tu repositorio
+                    repository.Add(customer); 
                     view.Message = "Cliente añadido correctamente";
                 }
 
@@ -90,7 +90,7 @@ namespace Supermarket_mvp_v2.Presenters
             try
             {
                 var customer = (CustomersModel)customerBindingSource.Current;
-                repository.Delete(customer.Id); // Implementa este método en tu repositorio
+                repository.Delete(customer.Id); 
                 view.IsSuccessful = true;
                 view.Message = "Cliente eliminado correctamente";
                 LoadAllCustomerList();
@@ -137,7 +137,7 @@ namespace Supermarket_mvp_v2.Presenters
             bool emptyValue = string.IsNullOrWhiteSpace(this.view.CustomersSearchValue);
             if (!emptyValue)
             {
-                customerList = repository.GetByValue(this.view.CustomersSearchValue); // Implementa este método en tu repositorio
+                customerList = repository.GetByValue(this.view.CustomersSearchValue); 
             }
             else
             {
