@@ -12,10 +12,9 @@ namespace Supermarket_mvp_v2.Presenters
     internal class ProductsPresenter
     {
         private IProductsView view;
-        private IProductsRepository repository; 
+        private IProductsRepository repository;
         private BindingSource productBindingSource;
         private IEnumerable<ProductsModels> productList;
-
 
         public ProductsPresenter(IProductsView view, IProductsRepository repository)
         {
@@ -23,7 +22,6 @@ namespace Supermarket_mvp_v2.Presenters
             this.repository = repository;
             this.productBindingSource = new BindingSource();
 
-            // Asociar eventos
             this.view.SearchEvent += SearchProduct;
             this.view.AddNewEvent += AddNewProduct;
             this.view.EditEvent += LoadSelectedProductToEdit;
@@ -35,18 +33,22 @@ namespace Supermarket_mvp_v2.Presenters
             LoadAllProductList();
 
             this.view.Show();
-        }
+
+        }//Fin de clase
 
         private void LoadAllProductList()
         {
             productList = repository.GetAll();
             productBindingSource.DataSource = productList;
-        }
+
+        }//Fin de clase
 
         private void CancelAction(object sender, EventArgs e)
         {
             CleanViewFields();
-        }
+            LoadAllProductList();
+
+        }//Fin de clase
 
         private void SaveProduct(object sender, EventArgs e)
         {
@@ -75,16 +77,17 @@ namespace Supermarket_mvp_v2.Presenters
                 }
 
                 view.IsSuccessful = true;
-                LoadAllProductList();
+                LoadAllProductList();  
                 CleanViewFields();
+                ClearSearchField();    
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
                 view.Message = ex.Message;
             }
-        }
 
+        }//Fin de clase
 
         private void DeleteSelectedProduct(object sender, EventArgs e)
         {
@@ -94,33 +97,44 @@ namespace Supermarket_mvp_v2.Presenters
                 repository.Delete(product.Id);
                 view.IsSuccessful = true;
                 view.Message = "Producto eliminado correctamente";
-                LoadAllProductList();
+                LoadAllProductList(); 
+                ClearSearchField();    
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
                 view.Message = "Ocurrió un error, no se pudo eliminar el producto";
             }
-        }
+
+        }//Fin de clase
 
         private void LoadSelectedProductToEdit(object sender, EventArgs e)
         {
             var product = (ProductsModels)productBindingSource.Current;
 
-            view.ProductId = product.Id.ToString();
-            view.ProductName = product.Name;
-            view.ProductPrice = product.Price.ToString();
-            view.ProductStock = product.Stock.ToString();
-            view.ProductCategoryId = product.CategoryId.ToString();
+            if (product != null)
+            {
+                view.ProductId = product.Id.ToString();
+                view.ProductName = product.Name;
+                view.ProductPrice = product.Price.ToString();
+                view.ProductStock = product.Stock.ToString();
+                view.ProductCategoryId = product.CategoryId.ToString();
+                view.IsEdit = true;
+            }
+            else
+            {
+                view.Message = "No se ha seleccionado ningún producto para editar.";
+            }
 
-            view.IsEdit = true;
-        }
+        }//Fin de clase
 
         private void AddNewProduct(object sender, EventArgs e)
         {
             view.IsEdit = false;
-            CleanViewFields(); 
-        }
+            LoadAllProductList();  
+            ClearSearchField();
+
+        }//Fin de clase
 
         private void SearchProduct(object sender, EventArgs e)
         {
@@ -134,7 +148,8 @@ namespace Supermarket_mvp_v2.Presenters
                 productList = repository.GetAll();
             }
             productBindingSource.DataSource = productList;
-        }
+
+        }//Fin de clase
 
         private void CleanViewFields()
         {
@@ -143,6 +158,13 @@ namespace Supermarket_mvp_v2.Presenters
             view.ProductPrice = "";
             view.ProductStock = "";
             view.ProductCategoryId = "";
-        }
+
+        }//Fin de clase
+
+        private void ClearSearchField()
+        {
+            view.SearchValue = "";
+
+        }//Fin de clase
     }
 }

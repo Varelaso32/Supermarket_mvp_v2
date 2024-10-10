@@ -128,7 +128,6 @@ namespace Supermarket_mvp_v2.Presenters
         private void AddNewPayMode(object sender, EventArgs e)
         {
             view.IsEdit = false;
-            CleanViewFields();
             LoadAllPayModeList();
 
         }//Fin de Clase
