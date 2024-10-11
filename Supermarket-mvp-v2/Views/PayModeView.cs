@@ -29,14 +29,14 @@ namespace Supermarket_mvp_v2.Views
         public PayModeView()
         {
             InitializeComponent();
+
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPagePayModeDetail);
-
-            SetPlaceholders();
 
             BtnClose.Click += delegate { this.Close(); };
 
         }//Fin de la clase
+    
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -49,7 +49,8 @@ namespace Supermarket_mvp_v2.Views
                 }
             };//
 
-            BtnNew.Click += delegate {
+            BtnNew.Click += delegate
+            {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
                 ClearSearchBox();
 
@@ -57,10 +58,12 @@ namespace Supermarket_mvp_v2.Views
                 tabControl1.TabPages.Add(tabPagePayModeDetail);
                 tabPagePayModeDetail.Text = "Añadir nuevo método de pago";
 
-                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty); 
+                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty);
+
             };//
 
-            BtnEdit.Click += delegate {
+            BtnEdit.Click += delegate
+            {
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 ClearSearchBox();
 
@@ -68,29 +71,34 @@ namespace Supermarket_mvp_v2.Views
                 tabControl1.TabPages.Add(tabPagePayModeDetail);
                 tabPagePayModeDetail.Text = "Editar método de pago";
 
-                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty);  
+                LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty);
             };//
 
-            BtnSave.Click += delegate {
+            BtnSave.Click += delegate
+            {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
 
                 if (isSuccessful)
                 {
                     tabControl1.TabPages.Remove(tabPagePayModeDetail);
                     tabControl1.TabPages.Add(tabPagePayModeList);
+                    ClearSearchBox();
                 }
 
                 MessageBox.Show(Message);
             };//
 
-            BtnCancel.Click += delegate {
+            BtnCancel.Click += delegate
+            {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
-
+                ClearSearchBox();
                 tabControl1.TabPages.Remove(tabPagePayModeDetail);
                 tabControl1.TabPages.Add(tabPagePayModeList);
+
             };//
 
-            BtnDelete.Click += delegate {
+            BtnDelete.Click += delegate
+            {
                 var result = MessageBox.Show(
                     "¿Está seguro de que desea eliminar el método de pago seleccionado?",
                     "Advertencia",
@@ -102,7 +110,7 @@ namespace Supermarket_mvp_v2.Views
                     MessageBox.Show(Message);
                     ClearSearchBox();
 
-                    LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty); 
+                    LoadAllPayModesEvent?.Invoke(this, EventArgs.Empty);
                 }
             };//
 
@@ -192,77 +200,15 @@ namespace Supermarket_mvp_v2.Views
         {
 
         }
-        private void SetPlaceholders()
-        {
-            TxtPayModeId.Text = "0";
-            TxtPayModeName.Text = "Ingrese el nombre del método de pago";
-            TxtPayModeObservation.Text = "Ingrese una observación del método de pago";
-            TxtSearch.Text = "Ingrese el término de búsqueda";
 
-            TxtPayModeId.Enter += TextBox_Enter;
-            TxtPayModeId.Leave += TextBox_Leave;
-            TxtPayModeName.Enter += TextBox_Enter;
-            TxtPayModeName.Leave += TextBox_Leave;
-            TxtPayModeObservation.Enter += TextBox_Enter;
-            TxtPayModeObservation.Leave += TextBox_Leave;
-            TxtSearch.Enter += TextBox_Enter;
-            TxtSearch.Leave += TextBox_Leave;
-
-        }//Fin de la clase
         private void ClearSearchBox()
         {
-            TxtSearch.Text = "Ingrese el término de búsqueda";
+            TxtSearch.Text = string.Empty;
+            TxtSearch.PlaceholderText = "Ingrese el término de búsqueda";
 
         }//Fin de la clase
 
-        private void TextBox_Enter(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-
-            textBox.SelectAll();
-
-            if (textBox == TxtPayModeId && textBox.Text == "0")
-            {
-                textBox.Text = "";
-            }
-            else if (textBox == TxtPayModeName && textBox.Text == "Ingrese el nombre del método de pago")
-            {
-                textBox.Text = "";
-            }
-            else if (textBox == TxtPayModeObservation && textBox.Text == "Ingrese una observación del método de pago")
-            {
-                textBox.Text = "";
-            }
-            else if (textBox == TxtSearch && textBox.Text == "Ingrese el término de búsqueda")
-            {
-                textBox.Text = "";
-            }
-
-        }//Fin de la clase
-
-        private void TextBox_Leave(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-
-            if (textBox == TxtPayModeId && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "0";
-            }
-            else if (textBox == TxtPayModeName && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "Ingrese el nombre del método de pago";
-            }
-            else if (textBox == TxtPayModeObservation && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "Ingrese una observación del método de pago";
-            }
-            else if (textBox == TxtSearch && string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Text = "Ingrese el término de búsqueda";
-            }
-
-        }//Fin de la clase
-
+        
     }//Fin de la clase
 
 }
