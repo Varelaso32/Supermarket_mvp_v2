@@ -93,6 +93,26 @@ namespace Supermarket_mvp_v2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar2 {
+            get {
+                object obj = ResourceManager.GetObject("agregar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap agregar3 {
+            get {
+                object obj = ResourceManager.GetObject("agregar3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buscar {
             get {
                 object obj = ResourceManager.GetObject("buscar", resourceCulture);
@@ -106,6 +126,26 @@ namespace Supermarket_mvp_v2.Properties {
         internal static System.Drawing.Bitmap buscar1 {
             get {
                 object obj = ResourceManager.GetObject("buscar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buscar2 {
+            get {
+                object obj = ResourceManager.GetObject("buscar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap buscar3 {
+            get {
+                object obj = ResourceManager.GetObject("buscar3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +196,26 @@ namespace Supermarket_mvp_v2.Properties {
         internal static System.Drawing.Bitmap carpetaediat1 {
             get {
                 object obj = ResourceManager.GetObject("carpetaediat1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carpetaediat2 {
+            get {
+                object obj = ResourceManager.GetObject("carpetaediat2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap carpetaediat3 {
+            get {
+                object obj = ResourceManager.GetObject("carpetaediat3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +376,26 @@ namespace Supermarket_mvp_v2.Properties {
         internal static System.Drawing.Bitmap eliminar_carpeta1 {
             get {
                 object obj = ResourceManager.GetObject("eliminar-carpeta1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eliminar_carpeta2 {
+            get {
+                object obj = ResourceManager.GetObject("eliminar-carpeta2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eliminar_carpeta3 {
+            get {
+                object obj = ResourceManager.GetObject("eliminar-carpeta3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
