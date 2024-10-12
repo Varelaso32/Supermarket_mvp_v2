@@ -23,7 +23,6 @@ namespace Supermarket_mvp_v2.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPageCategoriesDetail);
-            SetPlaceholders();
             BtnClose.Click += delegate { this.Close(); };
         }
 
@@ -157,44 +156,14 @@ namespace Supermarket_mvp_v2.Views
             DgCustomers.DataSource = categoryList;
         }
 
-        private void SetPlaceholders()
-        {
-            TxtPayModeId.Text = "0";
-            TxtPayModeName.Text = "Ingrese el nombre de la categoría";
-            TxtPayModeObservation.Text = "Ingrese la descripción de la categoría";
-
-            TxtPayModeId.Enter += TextBox_Enter;
-            TxtPayModeName.Enter += TextBox_Enter;
-            TxtPayModeObservation.Enter += TextBox_Enter;
-
-            TxtPayModeId.Leave += TextBox_Leave;
-            TxtPayModeName.Leave += TextBox_Leave;
-            TxtPayModeObservation.Leave += TextBox_Leave;
-        }
+       
 
         private void ClearSearchBox()
         {
-            TxtSearch.Text = "Ingrese el término de búsqueda";
+            TxtSearch.Text = string.Empty;
+            TxtSearch.PlaceholderText = "Ingrese el término de búsqueda";
         }
 
-        private void TextBox_Enter(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.SelectAll();
-            if (textBox.Text.Contains("Ingrese"))
-            {
-                textBox.Text = "";
-            }
-        }
-
-        private void TextBox_Leave(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                if (textBox == TxtPayModeName) textBox.Text = "Ingrese el nombre de la categoría";
-                else if (textBox == TxtPayModeObservation) textBox.Text = "Ingrese la descripción de la categoría";
-            }
-        }
+        
     }
 }

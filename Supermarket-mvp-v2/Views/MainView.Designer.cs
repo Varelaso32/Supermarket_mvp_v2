@@ -52,7 +52,7 @@
             panel1.ImeMode = ImeMode.NoControl;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 680);
+            panel1.Size = new Size(250, 555);
             panel1.TabIndex = 0;
             // 
             // BtnCategories
@@ -90,7 +90,7 @@
             BtnExit.BackgroundImage = Properties.Resources.cerrar_sesion;
             BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
             BtnExit.Dock = DockStyle.Bottom;
-            BtnExit.Location = new Point(0, 593);
+            BtnExit.Location = new Point(0, 468);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(250, 87);
             BtnExit.TabIndex = 2;
@@ -98,6 +98,7 @@
             // 
             // BtnPayMode
             // 
+            BtnPayMode.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BtnPayMode.BackgroundImage = Properties.Resources.comercio1;
             BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
             BtnPayMode.Location = new Point(3, 90);
@@ -120,7 +121,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1053, 680);
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(1020, 555);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;

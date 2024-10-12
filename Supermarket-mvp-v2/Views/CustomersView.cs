@@ -23,7 +23,6 @@ namespace Supermarket_mvp_v2.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabControl1.TabPages.Remove(tabPageCustomersDetail);
-            SetPlaceholders();
             BtnClose.Click += delegate { this.Close(); };
         }
 
@@ -186,64 +185,14 @@ namespace Supermarket_mvp_v2.Views
             DgCustomers.DataSource = customerList;
         }
 
-        private void SetPlaceholders()
-        {
-            TxtCustomersId.Text = "0";
-            TxtCustomersName.Text = "Ingrese el nombre del cliente";
-            TxtCustomersApellido.Text = "Ingrese el apellido del cliente";
-            TxtCustomersDocumento.Text = "Ingrese el documento del cliente";
-            TxtCustomersDireccion.Text = "Ingrese la dirección del cliente";
-            TxtCustomersCumple.Text = "Ingrese la fecha de cumpleaños";
-            TxtCustomersCelular.Text = "Ingrese el número celular";
-            TxtCustomersEmail.Text = "Ingrese el email del cliente";
-
-            // Evento para limpiar los placeholders al enfocar
-            TxtCustomersId.Enter += TextBox_Enter;
-            TxtCustomersName.Enter += TextBox_Enter;
-            TxtCustomersApellido.Enter += TextBox_Enter;
-            TxtCustomersDireccion.Enter += TextBox_Enter;
-            TxtCustomersCumple.Enter += TextBox_Enter;
-            TxtCustomersCelular.Enter += TextBox_Enter;
-            TxtCustomersEmail.Enter += TextBox_Enter;
-
-            // Evento para restablecer los placeholders al salir
-            TxtCustomersId.Leave += TextBox_Leave;
-            TxtCustomersName.Leave += TextBox_Leave;
-            TxtCustomersApellido.Leave += TextBox_Leave;
-            TxtCustomersDireccion.Leave += TextBox_Leave;
-            TxtCustomersCumple.Leave += TextBox_Leave;
-            TxtCustomersCelular.Leave += TextBox_Leave;
-            TxtCustomersEmail.Leave += TextBox_Leave;
-        }
+        
 
         private void ClearSearchBox()
         {
-            TxtSearch.Text = "Ingrese el término de búsqueda";
+            TxtSearch.Text = string.Empty;
+            TxtSearch.PlaceholderText = "Ingrese el término de búsqueda";
         }
 
-        private void TextBox_Enter(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.SelectAll();
-            if (textBox.Text.Contains("Ingrese"))
-            {
-                textBox.Text = "";
-            }
-        }
-
-        private void TextBox_Leave(object sender, EventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                if (textBox == TxtCustomersName) textBox.Text = "Ingrese el nombre del cliente";
-                else if (textBox == TxtCustomersApellido) textBox.Text = "Ingrese el apellido del cliente";
-                else if (textBox == TxtCustomersDocumento) textBox.Text = "Ingrese el documento del cliente";
-                else if (textBox == TxtCustomersDireccion) textBox.Text = "Ingrese la dirección del cliente";
-                else if (textBox == TxtCustomersCumple) textBox.Text = "Ingrese la fecha de cumpleaños";
-                else if (textBox == TxtCustomersCelular) textBox.Text = "Ingrese el número celular";
-                else if (textBox == TxtCustomersEmail) textBox.Text = "Ingrese el email del cliente";
-            }
-        }
+        
     }
 }

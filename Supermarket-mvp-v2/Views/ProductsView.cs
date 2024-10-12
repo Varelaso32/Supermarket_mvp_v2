@@ -25,7 +25,6 @@
                 AssociateAndRaiseViewEvents();
                 tabControl1.TabPages.Remove(tabPageProductsDetail);
 
-                SetPlaceholders();
                 BtnClose.Click += delegate { this.Close(); };
 
             }//Fin de la clase
@@ -196,64 +195,15 @@
 
             }//Fin de la clase
 
-            private void SetPlaceholders()
-            {
-                TxtProductsId.Text = "0";
-                TxtProductsName.Text = "Ingrese el nombre del producto";
-                TxtProductsPrecio.Text = "Ingrese el precio del producto";
-                TxtProductsStock.Text = "Ingrese el stock del producto";
-                TxtProductsCategoria.Text = "Ingrese el ID de la categoría";
-
-                TxtProductsId.Enter += TextBox_Enter;
-                TxtProductsId.Leave += TextBox_Leave;
-                TxtProductsName.Enter += TextBox_Enter;
-                TxtProductsName.Leave += TextBox_Leave;
-                TxtProductsPrecio.Enter += TextBox_Enter;
-                TxtProductsPrecio.Leave += TextBox_Leave;
-                TxtProductsStock.Enter += TextBox_Enter;
-                TxtProductsStock.Leave += TextBox_Leave;
-                TxtProductsCategoria.Enter += TextBox_Enter;
-                TxtProductsCategoria.Leave += TextBox_Leave;
-
-            }//Fin de la clase
+         
             private void ClearSearchBox()
             {
-                TxtSearch.Text = "Ingrese el término de búsqueda";
+                TxtSearch.Text = string.Empty;
+                TxtSearch.PlaceholderText = "Ingrese el término de búsqueda";
 
             }//Fin de la clase
-            private void TextBox_Enter(object sender, EventArgs e)
-            {
-                TextBox textBox = (TextBox)sender;
-                textBox.SelectAll();
-                if (textBox.Text.Contains("Ingrese"))
-                {
-                    textBox.Text = "";
-                }
+            
 
-            }//Fin de la clase
-
-            private void TextBox_Leave(object sender, EventArgs e)
-            {
-                TextBox textBox = (TextBox)sender;
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    if (textBox == TxtProductsName) textBox.Text = "Ingrese el nombre del producto";
-                    else if (textBox == TxtProductsPrecio) textBox.Text = "Ingrese el precio del producto";
-                    else if (textBox == TxtProductsStock) textBox.Text = "Ingrese el stock del producto";
-                    else if (textBox == TxtProductsCategoria) textBox.Text = "Ingrese el ID de la categoría";
-                }
-
-            }//Fin de la clase
-
-            private void ClearSearchAndFields()
-            {
-                TxtSearch.Text = "Buscar...";
-                TxtProductsId.Text = "0";
-                TxtProductsName.Text = "Ingrese el nombre del producto";
-                TxtProductsPrecio.Text = "Ingrese el precio del producto";
-                TxtProductsStock.Text = "Ingrese el stock del producto";
-                TxtProductsCategoria.Text = "Ingrese el ID de la categoría";
-
-            }//Fin de la clase
+           
         }
     }
