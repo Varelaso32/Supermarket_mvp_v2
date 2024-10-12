@@ -196,11 +196,6 @@ namespace Supermarket_mvp_v2.Views
 
         }//Fin de la clase
 
-        private void BtnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ClearSearchBox()
         {
             TxtSearch.Text = string.Empty;

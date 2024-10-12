@@ -30,9 +30,6 @@
         {
             tabControl1 = new TabControl();
             tabPageProductsList = new TabPage();
-            tabPageProductsDetail = new TabPage();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
             BtnClose = new Button();
             BtnDelete = new Button();
             BtnEdit = new Button();
@@ -41,23 +38,26 @@
             BtnSearch = new Button();
             TxtSearch = new TextBox();
             label2 = new Label();
+            tabPageProductsDetail = new TabPage();
+            TxtProductsCategoria = new TextBox();
+            label7 = new Label();
+            TxtProductsStock = new TextBox();
+            label6 = new Label();
+            TxtProductsPrecio = new TextBox();
+            label5 = new Label();
             BtnCancel = new Button();
             BtnSave = new Button();
             TxtProductsName = new TextBox();
             label4 = new Label();
             TxtProductsId = new TextBox();
             label3 = new Label();
-            TxtProductsPrecio = new TextBox();
-            label5 = new Label();
-            TxtProductsStock = new TextBox();
-            label6 = new Label();
-            TxtProductsCategoria = new TextBox();
-            label7 = new Label();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPageProductsList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgProducts).BeginInit();
             tabPageProductsDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DgProducts).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -89,47 +89,6 @@
             tabPageProductsList.Text = "Products List";
             tabPageProductsList.UseVisualStyleBackColor = true;
             // 
-            // tabPageProductsDetail
-            // 
-            tabPageProductsDetail.Controls.Add(TxtProductsCategoria);
-            tabPageProductsDetail.Controls.Add(label7);
-            tabPageProductsDetail.Controls.Add(TxtProductsStock);
-            tabPageProductsDetail.Controls.Add(label6);
-            tabPageProductsDetail.Controls.Add(TxtProductsPrecio);
-            tabPageProductsDetail.Controls.Add(label5);
-            tabPageProductsDetail.Controls.Add(BtnCancel);
-            tabPageProductsDetail.Controls.Add(BtnSave);
-            tabPageProductsDetail.Controls.Add(TxtProductsName);
-            tabPageProductsDetail.Controls.Add(label4);
-            tabPageProductsDetail.Controls.Add(TxtProductsId);
-            tabPageProductsDetail.Controls.Add(label3);
-            tabPageProductsDetail.Location = new Point(4, 29);
-            tabPageProductsDetail.Name = "tabPageProductsDetail";
-            tabPageProductsDetail.Padding = new Padding(3);
-            tabPageProductsDetail.Size = new Size(1092, 406);
-            tabPageProductsDetail.TabIndex = 1;
-            tabPageProductsDetail.Text = "Products Detail";
-            tabPageProductsDetail.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.products;
-            pictureBox1.Location = new Point(50, 35);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(160, 155);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(245, 99);
-            label1.Name = "label1";
-            label1.Size = new Size(83, 20);
-            label1.TabIndex = 3;
-            label1.Text = "PRODUCTS";
-            // 
             // BtnClose
             // 
             BtnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -143,7 +102,7 @@
             // BtnDelete
             // 
             BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnDelete.Image = Properties.Resources.delete;
+            BtnDelete.Image = Properties.Resources.eliminar_carpeta1;
             BtnDelete.Location = new Point(789, 251);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(213, 55);
@@ -153,7 +112,7 @@
             // BtnEdit
             // 
             BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnEdit.Image = Properties.Resources.edit;
+            BtnEdit.Image = Properties.Resources.carpetaediat1;
             BtnEdit.Location = new Point(789, 167);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(213, 55);
@@ -163,7 +122,7 @@
             // BtnNew
             // 
             BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnNew.Image = Properties.Resources._new;
+            BtnNew.Image = Properties.Resources.agregar1;
             BtnNew.Location = new Point(789, 87);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(213, 55);
@@ -187,7 +146,7 @@
             // BtnSearch
             // 
             BtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnSearch.Image = Properties.Resources.search_small;
+            BtnSearch.Image = Properties.Resources.buscar1;
             BtnSearch.Location = new Point(666, 19);
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(70, 52);
@@ -208,9 +167,82 @@
             label2.AutoSize = true;
             label2.Location = new Point(90, 19);
             label2.Name = "label2";
-            label2.Size = new Size(122, 20);
+            label2.Size = new Size(114, 20);
             label2.TabIndex = 8;
-            label2.Text = "Search Pay Mode";
+            label2.Text = "Search Products";
+            // 
+            // tabPageProductsDetail
+            // 
+            tabPageProductsDetail.Controls.Add(TxtProductsCategoria);
+            tabPageProductsDetail.Controls.Add(label7);
+            tabPageProductsDetail.Controls.Add(TxtProductsStock);
+            tabPageProductsDetail.Controls.Add(label6);
+            tabPageProductsDetail.Controls.Add(TxtProductsPrecio);
+            tabPageProductsDetail.Controls.Add(label5);
+            tabPageProductsDetail.Controls.Add(BtnCancel);
+            tabPageProductsDetail.Controls.Add(BtnSave);
+            tabPageProductsDetail.Controls.Add(TxtProductsName);
+            tabPageProductsDetail.Controls.Add(label4);
+            tabPageProductsDetail.Controls.Add(TxtProductsId);
+            tabPageProductsDetail.Controls.Add(label3);
+            tabPageProductsDetail.Location = new Point(4, 29);
+            tabPageProductsDetail.Name = "tabPageProductsDetail";
+            tabPageProductsDetail.Padding = new Padding(3);
+            tabPageProductsDetail.Size = new Size(1092, 406);
+            tabPageProductsDetail.TabIndex = 1;
+            tabPageProductsDetail.Text = "Products Detail";
+            tabPageProductsDetail.UseVisualStyleBackColor = true;
+            // 
+            // TxtProductsCategoria
+            // 
+            TxtProductsCategoria.Location = new Point(598, 140);
+            TxtProductsCategoria.Name = "TxtProductsCategoria";
+            TxtProductsCategoria.Size = new Size(364, 27);
+            TxtProductsCategoria.TabIndex = 21;
+            TxtProductsCategoria.Text = "Ingrese la categoria ID del producto";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(598, 117);
+            label7.Name = "label7";
+            label7.Size = new Size(138, 20);
+            label7.TabIndex = 20;
+            label7.Text = "Categoria ID Precio";
+            // 
+            // TxtProductsStock
+            // 
+            TxtProductsStock.Location = new Point(598, 62);
+            TxtProductsStock.Name = "TxtProductsStock";
+            TxtProductsStock.Size = new Size(364, 27);
+            TxtProductsStock.TabIndex = 19;
+            TxtProductsStock.Text = "Ingrese el stock del producto";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(598, 39);
+            label6.Name = "label6";
+            label6.Size = new Size(106, 20);
+            label6.TabIndex = 18;
+            label6.Text = "Products Stock";
+            // 
+            // TxtProductsPrecio
+            // 
+            TxtProductsPrecio.Location = new Point(155, 220);
+            TxtProductsPrecio.Name = "TxtProductsPrecio";
+            TxtProductsPrecio.Size = new Size(364, 27);
+            TxtProductsPrecio.TabIndex = 17;
+            TxtProductsPrecio.Text = "Ingrese el precio del producto";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(155, 197);
+            label5.Name = "label5";
+            label5.Size = new Size(111, 20);
+            label5.TabIndex = 16;
+            label5.Text = "Products Precio";
             // 
             // BtnCancel
             // 
@@ -266,56 +298,24 @@
             label3.TabIndex = 8;
             label3.Text = "Products Id";
             // 
-            // TxtProductsPrecio
+            // pictureBox1
             // 
-            TxtProductsPrecio.Location = new Point(155, 220);
-            TxtProductsPrecio.Name = "TxtProductsPrecio";
-            TxtProductsPrecio.Size = new Size(364, 27);
-            TxtProductsPrecio.TabIndex = 17;
-            TxtProductsPrecio.Text = "Ingrese el precio del producto";
+            pictureBox1.Image = Properties.Resources.descuento;
+            pictureBox1.Location = new Point(50, 35);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(160, 155);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
             // 
-            // label5
+            // label1
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(155, 197);
-            label5.Name = "label5";
-            label5.Size = new Size(111, 20);
-            label5.TabIndex = 16;
-            label5.Text = "Products Precio";
-            // 
-            // TxtProductsStock
-            // 
-            TxtProductsStock.Location = new Point(598, 62);
-            TxtProductsStock.Name = "TxtProductsStock";
-            TxtProductsStock.Size = new Size(364, 27);
-            TxtProductsStock.TabIndex = 19;
-            TxtProductsStock.Text = "Ingrese el stock del producto";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(598, 39);
-            label6.Name = "label6";
-            label6.Size = new Size(106, 20);
-            label6.TabIndex = 18;
-            label6.Text = "Products Stock";
-            // 
-            // TxtProductsCategoria
-            // 
-            TxtProductsCategoria.Location = new Point(598, 140);
-            TxtProductsCategoria.Name = "TxtProductsCategoria";
-            TxtProductsCategoria.Size = new Size(364, 27);
-            TxtProductsCategoria.TabIndex = 21;
-            TxtProductsCategoria.Text = "Ingrese la categoria ID del producto";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(598, 117);
-            label7.Name = "label7";
-            label7.Size = new Size(138, 20);
-            label7.TabIndex = 20;
-            label7.Text = "Categoria ID Precio";
+            label1.AutoSize = true;
+            label1.Location = new Point(245, 99);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 20);
+            label1.TabIndex = 3;
+            label1.Text = "PRODUCTS";
             // 
             // ProductsView
             // 
@@ -330,10 +330,10 @@
             tabControl1.ResumeLayout(false);
             tabPageProductsList.ResumeLayout(false);
             tabPageProductsList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DgProducts).EndInit();
             tabPageProductsDetail.ResumeLayout(false);
             tabPageProductsDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DgProducts).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

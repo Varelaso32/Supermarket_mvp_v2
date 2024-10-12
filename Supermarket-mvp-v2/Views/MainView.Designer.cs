@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             panel1 = new Panel();
+            BtnCategories = new Button();
             BtnCustomers = new Button();
             BtnProducts = new Button();
             BtnExit = new Button();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
-            BtnCategories = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -48,14 +49,25 @@
             panel1.Controls.Add(BtnPayMode);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Left;
+            panel1.ImeMode = ImeMode.NoControl;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 562);
+            panel1.Size = new Size(250, 680);
             panel1.TabIndex = 0;
+            // 
+            // BtnCategories
+            // 
+            BtnCategories.BackgroundImage = Properties.Resources.categorias1;
+            BtnCategories.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnCategories.Location = new Point(3, 368);
+            BtnCategories.Name = "BtnCategories";
+            BtnCategories.Size = new Size(244, 87);
+            BtnCategories.TabIndex = 5;
+            BtnCategories.UseVisualStyleBackColor = true;
             // 
             // BtnCustomers
             // 
-            BtnCustomers.BackgroundImage = Properties.Resources.providers1;
+            BtnCustomers.BackgroundImage = Properties.Resources.satisfaccion_del_cliente1;
             BtnCustomers.BackgroundImageLayout = ImageLayout.Zoom;
             BtnCustomers.Location = new Point(3, 275);
             BtnCustomers.Name = "BtnCustomers";
@@ -65,7 +77,7 @@
             // 
             // BtnProducts
             // 
-            BtnProducts.BackgroundImage = Properties.Resources.products1;
+            BtnProducts.BackgroundImage = Properties.Resources.descuento1;
             BtnProducts.BackgroundImageLayout = ImageLayout.Zoom;
             BtnProducts.Location = new Point(3, 182);
             BtnProducts.Name = "BtnProducts";
@@ -78,7 +90,7 @@
             BtnExit.BackgroundImage = Properties.Resources.cerrar_sesion;
             BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
             BtnExit.Dock = DockStyle.Bottom;
-            BtnExit.Location = new Point(0, 475);
+            BtnExit.Location = new Point(0, 593);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(250, 87);
             BtnExit.TabIndex = 2;
@@ -86,7 +98,7 @@
             // 
             // BtnPayMode
             // 
-            BtnPayMode.BackgroundImage = Properties.Resources.buy1;
+            BtnPayMode.BackgroundImage = Properties.Resources.comercio1;
             BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
             BtnPayMode.Location = new Point(3, 90);
             BtnPayMode.Name = "BtnPayMode";
@@ -104,22 +116,13 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // BtnCategories
-            // 
-            BtnCategories.BackgroundImage = Properties.Resources.categories21;
-            BtnCategories.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnCategories.Location = new Point(3, 368);
-            BtnCategories.Name = "BtnCategories";
-            BtnCategories.Size = new Size(244, 87);
-            BtnCategories.TabIndex = 5;
-            BtnCategories.UseVisualStyleBackColor = true;
-            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(945, 562);
+            ClientSize = new Size(1053, 680);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             Name = "MainView";
             Text = "Supermarket ";

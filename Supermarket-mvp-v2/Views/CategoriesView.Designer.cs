@@ -30,9 +30,7 @@
         {
             tabControl1 = new TabControl();
             tabPageCategoriesList = new TabPage();
-            tabPageCategoriesDetail = new TabPage();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
+            DgCustomers = new DataGridView();
             BtnClose = new Button();
             BtnSearch = new Button();
             BtnDelete = new Button();
@@ -40,7 +38,7 @@
             BtnEdit = new Button();
             TxtSearch = new TextBox();
             BtnNew = new Button();
-            DgCustomers = new DataGridView();
+            tabPageCategoriesDetail = new TabPage();
             BtnCancel = new Button();
             BtnSave = new Button();
             TxtPayModeObservation = new TextBox();
@@ -49,11 +47,13 @@
             label4 = new Label();
             TxtPayModeId = new TextBox();
             label3 = new Label();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPageCategoriesList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DgCustomers).BeginInit();
             tabPageCategoriesDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)DgCustomers).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -85,42 +85,19 @@
             tabPageCategoriesList.Text = "Customers List";
             tabPageCategoriesList.UseVisualStyleBackColor = true;
             // 
-            // tabPageCategoriesDetail
+            // DgCustomers
             // 
-            tabPageCategoriesDetail.Controls.Add(BtnCancel);
-            tabPageCategoriesDetail.Controls.Add(BtnSave);
-            tabPageCategoriesDetail.Controls.Add(TxtPayModeObservation);
-            tabPageCategoriesDetail.Controls.Add(label5);
-            tabPageCategoriesDetail.Controls.Add(TxtPayModeName);
-            tabPageCategoriesDetail.Controls.Add(label4);
-            tabPageCategoriesDetail.Controls.Add(TxtPayModeId);
-            tabPageCategoriesDetail.Controls.Add(label3);
-            tabPageCategoriesDetail.Location = new Point(4, 29);
-            tabPageCategoriesDetail.Name = "tabPageCategoriesDetail";
-            tabPageCategoriesDetail.Padding = new Padding(3);
-            tabPageCategoriesDetail.Size = new Size(989, 398);
-            tabPageCategoriesDetail.TabIndex = 1;
-            tabPageCategoriesDetail.Text = "Customers Detail";
-            tabPageCategoriesDetail.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.categories2;
-            pictureBox1.Location = new Point(53, 38);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(160, 155);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(255, 111);
-            label1.Name = "label1";
-            label1.Size = new Size(93, 20);
-            label1.TabIndex = 6;
-            label1.Text = "CATEGORIES";
+            DgCustomers.AllowUserToAddRows = false;
+            DgCustomers.AllowUserToDeleteRows = false;
+            DgCustomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            DgCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DgCustomers.Location = new Point(39, 91);
+            DgCustomers.Name = "DgCustomers";
+            DgCustomers.ReadOnly = true;
+            DgCustomers.RowHeadersWidth = 51;
+            DgCustomers.Size = new Size(617, 265);
+            DgCustomers.TabIndex = 30;
             // 
             // BtnClose
             // 
@@ -157,9 +134,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(39, 23);
             label2.Name = "label2";
-            label2.Size = new Size(122, 20);
+            label2.Size = new Size(128, 20);
             label2.TabIndex = 23;
-            label2.Text = "Search Pay Mode";
+            label2.Text = "Search Categories";
             // 
             // BtnEdit
             // 
@@ -190,19 +167,23 @@
             BtnNew.TabIndex = 26;
             BtnNew.UseVisualStyleBackColor = true;
             // 
-            // DgCustomers
+            // tabPageCategoriesDetail
             // 
-            DgCustomers.AllowUserToAddRows = false;
-            DgCustomers.AllowUserToDeleteRows = false;
-            DgCustomers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            DgCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgCustomers.Location = new Point(39, 91);
-            DgCustomers.Name = "DgCustomers";
-            DgCustomers.ReadOnly = true;
-            DgCustomers.RowHeadersWidth = 51;
-            DgCustomers.Size = new Size(617, 265);
-            DgCustomers.TabIndex = 30;
+            tabPageCategoriesDetail.Controls.Add(BtnCancel);
+            tabPageCategoriesDetail.Controls.Add(BtnSave);
+            tabPageCategoriesDetail.Controls.Add(TxtPayModeObservation);
+            tabPageCategoriesDetail.Controls.Add(label5);
+            tabPageCategoriesDetail.Controls.Add(TxtPayModeName);
+            tabPageCategoriesDetail.Controls.Add(label4);
+            tabPageCategoriesDetail.Controls.Add(TxtPayModeId);
+            tabPageCategoriesDetail.Controls.Add(label3);
+            tabPageCategoriesDetail.Location = new Point(4, 29);
+            tabPageCategoriesDetail.Name = "tabPageCategoriesDetail";
+            tabPageCategoriesDetail.Padding = new Padding(3);
+            tabPageCategoriesDetail.Size = new Size(989, 398);
+            tabPageCategoriesDetail.TabIndex = 1;
+            tabPageCategoriesDetail.Text = "Customers Detail";
+            tabPageCategoriesDetail.UseVisualStyleBackColor = true;
             // 
             // BtnCancel
             // 
@@ -276,6 +257,25 @@
             label3.TabIndex = 8;
             label3.Text = "Categories Id";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.categorias;
+            pictureBox1.Location = new Point(53, 38);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(160, 155);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(255, 111);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 20);
+            label1.TabIndex = 6;
+            label1.Text = "CATEGORIES";
+            // 
             // CategoriesView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -289,10 +289,10 @@
             tabControl1.ResumeLayout(false);
             tabPageCategoriesList.ResumeLayout(false);
             tabPageCategoriesList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DgCustomers).EndInit();
             tabPageCategoriesDetail.ResumeLayout(false);
             tabPageCategoriesDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)DgCustomers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
