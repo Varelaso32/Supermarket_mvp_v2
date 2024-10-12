@@ -27,7 +27,7 @@
 
                 BtnClose.Click += delegate { this.Close(); };
 
-            }//Fin de la clase
+        }//Fin de la clase
 
             private void AssociateAndRaiseViewEvents()
             {
@@ -43,6 +43,7 @@
                 BtnNew.Click += delegate {
                     AddNewEvent?.Invoke(this, EventArgs.Empty);
                     ClearSearchBox();
+                    ClearInputFields();
                     tabControl1.TabPages.Remove(tabPageProductsList);
                     tabControl1.TabPages.Add(tabPageProductsDetail);
                     tabPageProductsDetail.Text = "Añadir nuevo producto";
@@ -195,8 +196,16 @@
 
             }//Fin de la clase
 
-         
-            private void ClearSearchBox()
+        private void ClearInputFields()
+        {
+            TxtProductsName.Text = string.Empty;
+            TxtProductsPrecio.Text = string.Empty;
+            TxtProductsStock.Text = string.Empty;
+            TxtProductsCategoria.Text = string.Empty;
+        }
+
+
+        private void ClearSearchBox()
             {
                 TxtSearch.Text = string.Empty;
                 TxtSearch.PlaceholderText = "Ingrese el término de búsqueda";

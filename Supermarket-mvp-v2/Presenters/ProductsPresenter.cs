@@ -45,17 +45,14 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void CancelAction(object sender, EventArgs e)
         {
-            CleanViewFields();
             LoadAllProductList();
 
         }//Fin de clase
 
         private void SaveProduct(object sender, EventArgs e)
         {
-            // Crear un nuevo objeto de producto
             var product = new ProductsModels();
 
-            // Validar y convertir el ProductId
             if (!int.TryParse(view.ProductId, out int productId))
             {
                 view.Message = "El ID del producto no es válido.";
@@ -64,7 +61,6 @@ namespace Supermarket_mvp_v2.Presenters
             }
             product.Id = productId;
 
-            // Validar y convertir el ProductName
             if (string.IsNullOrWhiteSpace(view.ProductName))
             {
                 view.Message = "El nombre del producto no puede estar vacío.";
@@ -73,7 +69,6 @@ namespace Supermarket_mvp_v2.Presenters
             }
             product.Name = view.ProductName;
 
-            // Validar y convertir el ProductPrice
             if (!decimal.TryParse(view.ProductPrice, out decimal productPrice))
             {
                 view.Message = "El precio del producto no es válido.";
@@ -82,7 +77,6 @@ namespace Supermarket_mvp_v2.Presenters
             }
             product.Price = productPrice;
 
-            // Validar y convertir el ProductStock
             if (!int.TryParse(view.ProductStock, out int productStock))
             {
                 view.Message = "El stock del producto no es válido.";
@@ -91,7 +85,6 @@ namespace Supermarket_mvp_v2.Presenters
             }
             product.Stock = productStock;
 
-            // Validar y convertir el CategoryId
             if (!int.TryParse(view.ProductCategoryId, out int categoryId))
             {
                 view.Message = "El ID de la Categoria no es válida.";
@@ -102,36 +95,33 @@ namespace Supermarket_mvp_v2.Presenters
 
             try
             {
-                new Common.ModelDataValidation().Validate(product); // Realiza la validación de los datos
+                new Common.ModelDataValidation().Validate(product); 
 
                 if (view.IsEdit)
                 {
                     repository.Edit(product);
-                    view.Message = "Producto editado correctamente."; // Mensaje exitoso al editar
+                    view.Message = "Producto editado correctamente."; 
                 }
                 else
                 {
                     repository.Add(product);
-                    view.Message = "Producto añadido correctamente."; // Mensaje exitoso al agregar
+                    view.Message = "Producto añadido correctamente."; 
                 }
 
                 view.IsSuccessful = true;
-                LoadAllProductList(); // Cargar la lista actualizada de productos
+                LoadAllProductList(); 
             }
             catch (ArgumentException ex)
             {
                 view.IsSuccessful = false;
-                view.Message = ex.Message; // Mensaje específico para el CategoryId no existente
+                view.Message = ex.Message;
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
-                view.Message = "Ocurrió un error: " + ex.Message; // Mensaje de error si ocurre una excepción
+                view.Message = "Ocurrió un error: " + ex.Message;
             }
         }
-
-
-
 
         private void DeleteSelectedProduct(object sender, EventArgs e)
         {
@@ -195,15 +185,7 @@ namespace Supermarket_mvp_v2.Presenters
 
         }//Fin de clase
 
-        private void CleanViewFields()
-        {
-            view.ProductId = "0";
-            view.ProductName = "";
-            view.ProductPrice = "";
-            view.ProductStock = "";
-            view.ProductCategoryId = "";
 
-        }//Fin de clase
 
         private void ClearSearchField()
         {

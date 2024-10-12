@@ -82,10 +82,6 @@ namespace Supermarket_mvp_v2.Views
                 }
             };
 
-            TxtSearch.Click += delegate
-            {
-                TxtSearch.Clear();
-            };
         }
 
         public static CategoriesView GetInstance(Form parentContainer)

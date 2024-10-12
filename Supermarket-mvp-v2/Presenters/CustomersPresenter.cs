@@ -33,6 +33,7 @@ namespace Supermarket_mvp_v2.Presenters
         }
 
         private void LoadAllCustomerList()
+
         {
             customerList = repository.GetAll(); 
             customerBindingSource.DataSource = customerList;
@@ -40,7 +41,6 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void CancelAction(object sender, EventArgs e)
         {
-            CleanViewFields();
             LoadAllCustomerList();
         }
 
@@ -75,7 +75,6 @@ namespace Supermarket_mvp_v2.Presenters
 
                 view.IsSuccessful = true;
                 LoadAllCustomerList();
-                CleanViewFields();
                 ClearSearchField();
             }
             catch (Exception ex)
@@ -146,17 +145,7 @@ namespace Supermarket_mvp_v2.Presenters
             customerBindingSource.DataSource = customerList;
         }
 
-        private void CleanViewFields()
-        {
-            view.CustomersId = "0";
-            view.CustomersDocumentNumber = "";
-            view.CustomersFirstName = "";
-            view.CustomersLastName = "";
-            view.CustomersAddress = "";
-            view.CustomersBirthDate = "";
-            view.CustomersPhoneNumber = "";
-            view.CustomersEmail = "";
-        }
+      
 
         private void ClearSearchField()
         {

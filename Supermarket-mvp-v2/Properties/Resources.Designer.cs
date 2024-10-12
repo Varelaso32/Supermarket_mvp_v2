@@ -413,9 +413,29 @@ namespace Supermarket_mvp_v2.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoGoku1 {
+            get {
+                object obj = ResourceManager.GetObject("fondoGoku1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pag_principal {
             get {
                 object obj = ResourceManager.GetObject("pag-principal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pag_principal1 {
+            get {
+                object obj = ResourceManager.GetObject("pag-principal1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

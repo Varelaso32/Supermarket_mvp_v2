@@ -152,24 +152,24 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Controls.Add(tabControl1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1016, 652);
+            panel1.Size = new Size(1016, 710);
             panel1.TabIndex = 6;
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tabPageCustomersList);
             tabControl1.Controls.Add(tabPageCustomersDetail);
-            tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Location = new Point(0, 190);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1016, 462);
+            tabControl1.Size = new Size(1016, 520);
             tabControl1.TabIndex = 24;
             // 
             // tabPageCustomersList
@@ -213,14 +213,14 @@
             tabPageCustomersDetail.Location = new Point(4, 29);
             tabPageCustomersDetail.Name = "tabPageCustomersDetail";
             tabPageCustomersDetail.Padding = new Padding(3);
-            tabPageCustomersDetail.Size = new Size(1008, 429);
+            tabPageCustomersDetail.Size = new Size(1008, 487);
             tabPageCustomersDetail.TabIndex = 1;
             tabPageCustomersDetail.Text = "Customers Deatail";
             tabPageCustomersDetail.UseVisualStyleBackColor = true;
             // 
             // TxtCustomersEmail
             // 
-            TxtCustomersEmail.Location = new Point(544, 270);
+            TxtCustomersEmail.Location = new Point(547, 292);
             TxtCustomersEmail.Name = "TxtCustomersEmail";
             TxtCustomersEmail.PlaceholderText = "Ingrese el email";
             TxtCustomersEmail.Size = new Size(364, 27);
@@ -229,7 +229,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(547, 250);
+            label10.Location = new Point(550, 272);
             label10.Name = "label10";
             label10.Size = new Size(119, 20);
             label10.TabIndex = 38;
@@ -237,7 +237,7 @@
             // 
             // TxtCustomersCelular
             // 
-            TxtCustomersCelular.Location = new Point(544, 196);
+            TxtCustomersCelular.Location = new Point(544, 206);
             TxtCustomersCelular.Name = "TxtCustomersCelular";
             TxtCustomersCelular.PlaceholderText = "Ingrese el celular";
             TxtCustomersCelular.Size = new Size(364, 27);
@@ -246,7 +246,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(547, 176);
+            label9.Location = new Point(547, 186);
             label9.Name = "label9";
             label9.Size = new Size(128, 20);
             label9.TabIndex = 36;
@@ -271,7 +271,7 @@
             // 
             // TxtCustomersCumple
             // 
-            TxtCustomersCumple.Location = new Point(544, 124);
+            TxtCustomersCumple.Location = new Point(544, 130);
             TxtCustomersCumple.Name = "TxtCustomersCumple";
             TxtCustomersCumple.PlaceholderText = "Ingrese el cumpleaños";
             TxtCustomersCumple.Size = new Size(364, 27);
@@ -280,7 +280,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(547, 104);
+            label7.Location = new Point(547, 110);
             label7.Name = "label7";
             label7.Size = new Size(164, 20);
             label7.TabIndex = 32;
@@ -323,7 +323,7 @@
             // BtnCancel
             // 
             BtnCancel.Image = Properties.Resources.cancel;
-            BtnCancel.Location = new Point(816, 332);
+            BtnCancel.Location = new Point(730, 352);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(92, 59);
             BtnCancel.TabIndex = 27;
@@ -332,7 +332,7 @@
             // BtnSave
             // 
             BtnSave.Image = Properties.Resources.save;
-            BtnSave.Location = new Point(701, 332);
+            BtnSave.Location = new Point(615, 352);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(92, 59);
             BtnSave.TabIndex = 26;
@@ -397,7 +397,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1016, 654);
+            ClientSize = new Size(1016, 712);
             Controls.Add(panel1);
             Name = "CustomersView";
             Text = "CustomersView";

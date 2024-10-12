@@ -52,16 +52,16 @@
             panel1.ImeMode = ImeMode.NoControl;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 555);
+            panel1.Size = new Size(250, 850);
             panel1.TabIndex = 0;
             // 
             // BtnCategories
             // 
             BtnCategories.BackgroundImage = Properties.Resources.categorias1;
             BtnCategories.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnCategories.Location = new Point(3, 368);
+            BtnCategories.Location = new Point(0, 548);
             BtnCategories.Name = "BtnCategories";
-            BtnCategories.Size = new Size(244, 87);
+            BtnCategories.Size = new Size(250, 150);
             BtnCategories.TabIndex = 5;
             BtnCategories.UseVisualStyleBackColor = true;
             // 
@@ -69,9 +69,9 @@
             // 
             BtnCustomers.BackgroundImage = Properties.Resources.satisfaccion_del_cliente1;
             BtnCustomers.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnCustomers.Location = new Point(3, 275);
+            BtnCustomers.Location = new Point(0, 395);
             BtnCustomers.Name = "BtnCustomers";
-            BtnCustomers.Size = new Size(244, 87);
+            BtnCustomers.Size = new Size(250, 150);
             BtnCustomers.TabIndex = 4;
             BtnCustomers.UseVisualStyleBackColor = true;
             // 
@@ -79,9 +79,9 @@
             // 
             BtnProducts.BackgroundImage = Properties.Resources.descuento1;
             BtnProducts.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnProducts.Location = new Point(3, 182);
+            BtnProducts.Location = new Point(0, 242);
             BtnProducts.Name = "BtnProducts";
-            BtnProducts.Size = new Size(244, 87);
+            BtnProducts.Size = new Size(250, 150);
             BtnProducts.TabIndex = 3;
             BtnProducts.UseVisualStyleBackColor = true;
             // 
@@ -90,9 +90,9 @@
             BtnExit.BackgroundImage = Properties.Resources.cerrar_sesion;
             BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
             BtnExit.Dock = DockStyle.Bottom;
-            BtnExit.Location = new Point(0, 468);
+            BtnExit.Location = new Point(0, 700);
             BtnExit.Name = "BtnExit";
-            BtnExit.Size = new Size(250, 87);
+            BtnExit.Size = new Size(250, 150);
             BtnExit.TabIndex = 2;
             BtnExit.UseVisualStyleBackColor = true;
             // 
@@ -101,9 +101,9 @@
             BtnPayMode.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BtnPayMode.BackgroundImage = Properties.Resources.comercio1;
             BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnPayMode.Location = new Point(3, 90);
+            BtnPayMode.Location = new Point(0, 90);
             BtnPayMode.Name = "BtnPayMode";
-            BtnPayMode.Size = new Size(244, 87);
+            BtnPayMode.Size = new Size(250, 150);
             BtnPayMode.TabIndex = 1;
             BtnPayMode.UseVisualStyleBackColor = true;
             // 
@@ -121,8 +121,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1020, 555);
+            BackgroundImage = Properties.Resources.fondoGoku1;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1046, 850);
             Controls.Add(panel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;

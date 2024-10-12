@@ -40,6 +40,7 @@ namespace Supermarket_mvp_v2.Views
             BtnNew.Click += delegate {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
                 ClearSearchBox();
+                ClearInputFields();
                 tabControl1.TabPages.Remove(tabPageCustomersList);
                 tabControl1.TabPages.Add(tabPageCustomersDetail);
                 tabPageCustomersDetail.Text = "Añadir nuevo cliente";
@@ -82,10 +83,6 @@ namespace Supermarket_mvp_v2.Views
                 }
             };
 
-            TxtSearch.Click += delegate
-            {
-                TxtSearch.Clear();
-            };
         }
         public static CustomersView GetInstance(Form parentContainer)
         {
@@ -184,8 +181,18 @@ namespace Supermarket_mvp_v2.Views
         {
             DgCustomers.DataSource = customerList;
         }
+        private void ClearInputFields()
+        {
+            TxtCustomersId.Text = string.Empty;
+            TxtCustomersDocumento.Text = string.Empty;
+            TxtCustomersName.Text = string.Empty;
+            TxtCustomersApellido.Text = string.Empty;
+            TxtCustomersDireccion.Text = string.Empty;
+            TxtCustomersCumple.Text = string.Empty;
+            TxtCustomersCelular.Text = string.Empty;
+            TxtCustomersEmail.Text = string.Empty;
+        }
 
-        
 
         private void ClearSearchBox()
         {
