@@ -226,7 +226,7 @@
             // 
             TxtProductsPrecio.Location = new Point(155, 220);
             TxtProductsPrecio.Name = "TxtProductsPrecio";
-            TxtProductsPrecio.PlaceholderText = "Ingrese el precio del producto";
+            TxtProductsPrecio.PlaceholderText = "$0";
             TxtProductsPrecio.Size = new Size(364, 27);
             TxtProductsPrecio.TabIndex = 17;
             // 

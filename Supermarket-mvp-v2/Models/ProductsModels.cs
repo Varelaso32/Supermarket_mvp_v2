@@ -21,5 +21,7 @@ namespace Supermarket_mvp_v2.Models
 
         [Required(ErrorMessage = "La categoría es obligatoria.")]
         public int CategoryId { get; set; }
+
+
     }
 }

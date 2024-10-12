@@ -185,7 +185,7 @@
             tabPageCustomersList.Location = new Point(4, 29);
             tabPageCustomersList.Name = "tabPageCustomersList";
             tabPageCustomersList.Padding = new Padding(3);
-            tabPageCustomersList.Size = new Size(1008, 429);
+            tabPageCustomersList.Size = new Size(1008, 487);
             tabPageCustomersList.TabIndex = 0;
             tabPageCustomersList.Text = "Customers List ";
             tabPageCustomersList.UseVisualStyleBackColor = true;
@@ -273,7 +273,7 @@
             // 
             TxtCustomersCumple.Location = new Point(544, 130);
             TxtCustomersCumple.Name = "TxtCustomersCumple";
-            TxtCustomersCumple.PlaceholderText = "Ingrese el cumpleaños";
+            TxtCustomersCumple.PlaceholderText = "YYYY-MM-DD";
             TxtCustomersCumple.Size = new Size(364, 27);
             TxtCustomersCumple.TabIndex = 33;
             // 

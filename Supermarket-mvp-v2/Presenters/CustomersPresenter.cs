@@ -46,9 +46,17 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void SaveCustomer(object sender, EventArgs e)
         {
+            int customerId = 0;
+
+            
+            if (!string.IsNullOrEmpty(view.CustomersId))
+            {
+                customerId = Convert.ToInt32(view.CustomersId);
+            }
+
             var customer = new CustomersModel
             {
-                Id = Convert.ToInt32(view.CustomersId),
+                Id = customerId, 
                 DocumentNumber = view.CustomersDocumentNumber,
                 FirstName = view.CustomersFirstName,
                 LastName = view.CustomersLastName,
@@ -60,16 +68,16 @@ namespace Supermarket_mvp_v2.Presenters
 
             try
             {
-                new Common.ModelDataValidation().Validate(customer); 
+                new Common.ModelDataValidation().Validate(customer);
 
                 if (view.IsEdit)
                 {
-                    repository.Edit(customer); 
+                    repository.Edit(customer);
                     view.Message = "Cliente editado correctamente";
                 }
                 else
                 {
-                    repository.Add(customer); 
+                    repository.Add(customer);
                     view.Message = "Cliente añadido correctamente";
                 }
 
@@ -83,6 +91,7 @@ namespace Supermarket_mvp_v2.Presenters
                 view.Message = ex.Message;
             }
         }
+
 
         private void DeleteSelectedCustomer(object sender, EventArgs e)
         {

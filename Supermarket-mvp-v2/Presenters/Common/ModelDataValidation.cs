@@ -11,21 +11,20 @@ namespace Supermarket_mvp_v2.Presenters.Common
     {
         public void Validate(object model)
         {
-            string errorMessage = "";
             List<ValidationResult> validationResults = new List<ValidationResult>();
             ValidationContext validationContext = new ValidationContext(model);
             bool isValid = Validator.TryValidateObject(
                 model, validationContext, validationResults, true);
 
-            if (isValid == false)
+            if (!isValid)
             {
-                foreach (var item in validationResults)
+                
+                var firstError = validationResults.FirstOrDefault();
+                if (firstError != null)
                 {
-                    errorMessage += item.ErrorMessage + "\n";
+                    throw new Exception(firstError.ErrorMessage);
                 }
-                throw new Exception(errorMessage);
             }
         }
-
     }
 }

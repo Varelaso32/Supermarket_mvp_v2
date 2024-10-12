@@ -51,77 +51,47 @@ namespace Supermarket_mvp_v2.Presenters
 
         private void SaveProduct(object sender, EventArgs e)
         {
-            var product = new ProductsModels();
-
-            if (!int.TryParse(view.ProductId, out int productId))
+            int productId = 0;
+            if (!string.IsNullOrEmpty(view.ProductId))
             {
-                view.Message = "El ID del producto no es válido.";
-                view.IsSuccessful = false;
-                return;
+                productId = Convert.ToInt32(view.ProductId);
             }
-            product.Id = productId;
 
-            if (string.IsNullOrWhiteSpace(view.ProductName))
+            var product = new ProductsModels
             {
-                view.Message = "El nombre del producto no puede estar vacío.";
-                view.IsSuccessful = false;
-                return;
-            }
-            product.Name = view.ProductName;
-
-            if (!decimal.TryParse(view.ProductPrice, out decimal productPrice))
-            {
-                view.Message = "El precio del producto no es válido.";
-                view.IsSuccessful = false;
-                return;
-            }
-            product.Price = productPrice;
-
-            if (!int.TryParse(view.ProductStock, out int productStock))
-            {
-                view.Message = "El stock del producto no es válido.";
-                view.IsSuccessful = false;
-                return;
-            }
-            product.Stock = productStock;
-
-            if (!int.TryParse(view.ProductCategoryId, out int categoryId))
-            {
-                view.Message = "El ID de la Categoria no es válida.";
-                view.IsSuccessful = false;
-                return;
-            }
-            product.CategoryId = categoryId;
+                Id = productId,
+                Name = view.ProductName,
+                Price = decimal.TryParse(view.ProductPrice, out decimal price) ? price : 0,
+                Stock = int.TryParse(view.ProductStock, out int stock) ? stock : 0,
+                CategoryId = int.TryParse(view.ProductCategoryId, out int categoryId) ? categoryId : 0
+            };
 
             try
             {
-                new Common.ModelDataValidation().Validate(product); 
+                new Common.ModelDataValidation().Validate(product);
 
                 if (view.IsEdit)
                 {
                     repository.Edit(product);
-                    view.Message = "Producto editado correctamente."; 
+                    view.Message = "Producto editado correctamente.";
                 }
                 else
                 {
                     repository.Add(product);
-                    view.Message = "Producto añadido correctamente."; 
+                    view.Message = "Producto añadido correctamente.";
                 }
 
                 view.IsSuccessful = true;
-                LoadAllProductList(); 
-            }
-            catch (ArgumentException ex)
-            {
-                view.IsSuccessful = false;
-                view.Message = ex.Message;
+                LoadAllProductList();
+                ClearSearchField();
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
-                view.Message = "Ocurrió un error: " + ex.Message;
+                view.Message = ex.Message;
             }
         }
+
 
         private void DeleteSelectedProduct(object sender, EventArgs e)
         {
