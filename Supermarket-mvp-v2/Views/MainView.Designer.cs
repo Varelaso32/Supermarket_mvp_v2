@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             panel1 = new Panel();
             BtnCategories = new Button();
@@ -36,6 +37,7 @@
             BtnExit = new Button();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
+            toolTip1 = new ToolTip(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -63,6 +65,7 @@
             BtnCategories.Name = "BtnCategories";
             BtnCategories.Size = new Size(250, 150);
             BtnCategories.TabIndex = 5;
+            toolTip1.SetToolTip(BtnCategories, "Ingresar a las categorias");
             BtnCategories.UseVisualStyleBackColor = true;
             // 
             // BtnCustomers
@@ -73,6 +76,7 @@
             BtnCustomers.Name = "BtnCustomers";
             BtnCustomers.Size = new Size(250, 150);
             BtnCustomers.TabIndex = 4;
+            toolTip1.SetToolTip(BtnCustomers, "Registrar clientes");
             BtnCustomers.UseVisualStyleBackColor = true;
             // 
             // BtnProducts
@@ -83,6 +87,7 @@
             BtnProducts.Name = "BtnProducts";
             BtnProducts.Size = new Size(250, 150);
             BtnProducts.TabIndex = 3;
+            toolTip1.SetToolTip(BtnProducts, "Ingresar a los productos");
             BtnProducts.UseVisualStyleBackColor = true;
             // 
             // BtnExit
@@ -94,6 +99,7 @@
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(250, 150);
             BtnExit.TabIndex = 2;
+            toolTip1.SetToolTip(BtnExit, "Cerrar sección");
             BtnExit.UseVisualStyleBackColor = true;
             // 
             // BtnPayMode
@@ -105,6 +111,7 @@
             BtnPayMode.Name = "BtnPayMode";
             BtnPayMode.Size = new Size(250, 150);
             BtnPayMode.TabIndex = 1;
+            toolTip1.SetToolTip(BtnPayMode, "Ingresar al metodo de pago");
             BtnPayMode.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
@@ -144,5 +151,6 @@
         private Button BtnProducts;
         private Button BtnCustomers;
         private Button BtnCategories;
+        private ToolTip toolTip1;
     }
 }

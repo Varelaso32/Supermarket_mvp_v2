@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
@@ -50,6 +51,7 @@
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -125,6 +127,7 @@
             BtnClose.Name = "BtnClose";
             BtnClose.Size = new Size(213, 55);
             BtnClose.TabIndex = 34;
+            toolTip1.SetToolTip(BtnClose, "Cerrar");
             BtnClose.UseVisualStyleBackColor = true;
             // 
             // BtnDelete
@@ -135,6 +138,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(213, 55);
             BtnDelete.TabIndex = 33;
+            toolTip1.SetToolTip(BtnDelete, "Eliminar método de pago");
             BtnDelete.UseVisualStyleBackColor = true;
             // 
             // BtnEdit
@@ -145,6 +149,7 @@
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(213, 55);
             BtnEdit.TabIndex = 32;
+            toolTip1.SetToolTip(BtnEdit, "Editar método de pago");
             BtnEdit.UseVisualStyleBackColor = true;
             // 
             // BtnNew
@@ -155,6 +160,7 @@
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(213, 55);
             BtnNew.TabIndex = 31;
+            toolTip1.SetToolTip(BtnNew, "Ingresar método de pago");
             BtnNew.UseVisualStyleBackColor = true;
             // 
             // BtnSearch
@@ -165,6 +171,7 @@
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(70, 52);
             BtnSearch.TabIndex = 30;
+            toolTip1.SetToolTip(BtnSearch, "Buscar información");
             BtnSearch.UseVisualStyleBackColor = true;
             // 
             // TxtSearch
@@ -224,6 +231,7 @@
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(92, 59);
             BtnCancel.TabIndex = 7;
+            toolTip1.SetToolTip(BtnCancel, "Cancelar");
             BtnCancel.UseVisualStyleBackColor = true;
             // 
             // BtnSave
@@ -233,6 +241,7 @@
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(92, 59);
             BtnSave.TabIndex = 6;
+            toolTip1.SetToolTip(BtnSave, "Guardar");
             BtnSave.UseVisualStyleBackColor = true;
             // 
             // TxtPayModeObservation
@@ -333,5 +342,6 @@
         private Label label5;
         private Label label4;
         private Label label3;
+        private ToolTip toolTip1;
     }
 }

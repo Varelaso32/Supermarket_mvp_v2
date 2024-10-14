@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DgProducts = new DataGridView();
             panel1 = new Panel();
             tabControl1 = new TabControl();
@@ -54,6 +55,7 @@
             label3 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)DgProducts).BeginInit();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -124,6 +126,7 @@
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(213, 46);
             BtnDelete.TabIndex = 17;
+            toolTip1.SetToolTip(BtnDelete, "Eliminar método de pago");
             BtnDelete.UseVisualStyleBackColor = true;
             // 
             // BtnClose
@@ -134,6 +137,7 @@
             BtnClose.Name = "BtnClose";
             BtnClose.Size = new Size(213, 55);
             BtnClose.TabIndex = 15;
+            toolTip1.SetToolTip(BtnClose, "Cerrar");
             BtnClose.UseVisualStyleBackColor = true;
             // 
             // BtnNew
@@ -144,6 +148,7 @@
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(213, 46);
             BtnNew.TabIndex = 15;
+            toolTip1.SetToolTip(BtnNew, "Ingresar método de pago");
             BtnNew.UseVisualStyleBackColor = true;
             // 
             // BtnEdit
@@ -154,6 +159,7 @@
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(213, 46);
             BtnEdit.TabIndex = 16;
+            toolTip1.SetToolTip(BtnEdit, "Editar método de pago");
             BtnEdit.UseVisualStyleBackColor = true;
             // 
             // TxtSearch
@@ -173,6 +179,7 @@
             BtnSearch.Name = "BtnSearch";
             BtnSearch.Size = new Size(70, 52);
             BtnSearch.TabIndex = 10;
+            toolTip1.SetToolTip(BtnSearch, "Buscar información");
             BtnSearch.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -208,7 +215,7 @@
             // 
             // TxtProductsCategoria
             // 
-            TxtProductsCategoria.Location = new Point(598, 140);
+            TxtProductsCategoria.Location = new Point(595, 182);
             TxtProductsCategoria.Name = "TxtProductsCategoria";
             TxtProductsCategoria.PlaceholderText = "Ingrese la categoria ID del producto";
             TxtProductsCategoria.Size = new Size(364, 27);
@@ -216,7 +223,7 @@
             // 
             // TxtProductsStock
             // 
-            TxtProductsStock.Location = new Point(598, 62);
+            TxtProductsStock.Location = new Point(595, 104);
             TxtProductsStock.Name = "TxtProductsStock";
             TxtProductsStock.PlaceholderText = "Ingrese el stock del producto";
             TxtProductsStock.Size = new Size(364, 27);
@@ -224,7 +231,7 @@
             // 
             // TxtProductsPrecio
             // 
-            TxtProductsPrecio.Location = new Point(155, 220);
+            TxtProductsPrecio.Location = new Point(157, 227);
             TxtProductsPrecio.Name = "TxtProductsPrecio";
             TxtProductsPrecio.PlaceholderText = "$0";
             TxtProductsPrecio.Size = new Size(364, 27);
@@ -232,15 +239,15 @@
             // 
             // TxtProductsName
             // 
-            TxtProductsName.Location = new Point(155, 144);
+            TxtProductsName.Location = new Point(157, 151);
             TxtProductsName.Name = "TxtProductsName";
-            TxtProductsName.PlaceholderText = "Ingrese el nombre del método de pago";
+            TxtProductsName.PlaceholderText = "Ingrese el nombre del producto";
             TxtProductsName.Size = new Size(364, 27);
             TxtProductsName.TabIndex = 11;
             // 
             // TxtProductsId
             // 
-            TxtProductsId.Location = new Point(155, 66);
+            TxtProductsId.Location = new Point(157, 73);
             TxtProductsId.Name = "TxtProductsId";
             TxtProductsId.ReadOnly = true;
             TxtProductsId.Size = new Size(221, 27);
@@ -251,7 +258,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(601, 120);
+            label7.Location = new Point(598, 162);
             label7.Name = "label7";
             label7.Size = new Size(138, 20);
             label7.TabIndex = 20;
@@ -260,7 +267,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(601, 42);
+            label6.Location = new Point(598, 84);
             label6.Name = "label6";
             label6.Size = new Size(106, 20);
             label6.TabIndex = 18;
@@ -269,7 +276,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(158, 200);
+            label5.Location = new Point(160, 207);
             label5.Name = "label5";
             label5.Size = new Size(111, 20);
             label5.TabIndex = 16;
@@ -278,7 +285,7 @@
             // BtnCancel
             // 
             BtnCancel.Image = Properties.Resources.cancel;
-            BtnCancel.Location = new Point(542, 333);
+            BtnCancel.Location = new Point(552, 305);
             BtnCancel.Name = "BtnCancel";
             BtnCancel.Size = new Size(92, 59);
             BtnCancel.TabIndex = 15;
@@ -287,7 +294,7 @@
             // BtnSave
             // 
             BtnSave.Image = Properties.Resources.save;
-            BtnSave.Location = new Point(427, 333);
+            BtnSave.Location = new Point(437, 305);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(92, 59);
             BtnSave.TabIndex = 14;
@@ -296,7 +303,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(158, 124);
+            label4.Location = new Point(160, 131);
             label4.Name = "label4";
             label4.Size = new Size(110, 20);
             label4.TabIndex = 10;
@@ -305,7 +312,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(158, 46);
+            label3.Location = new Point(160, 53);
             label3.Name = "label3";
             label3.Size = new Size(83, 20);
             label3.TabIndex = 8;
@@ -377,5 +384,6 @@
         private Button BtnSave;
         private Label label4;
         private Label label3;
+        private ToolTip toolTip1;
     }
 }
